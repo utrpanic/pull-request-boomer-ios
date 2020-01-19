@@ -3,10 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60B3FD5723D46772003269C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 60B3FD5623D46772003269C2 /* Alamofire */; };
+		60B3FD5B23D4679C003269C2 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3FD5A23D4679C003269C2 /* NetworkAPI.swift */; };
+		60B3FD5E23D467A6003269C2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 60B3FD5D23D467A6003269C2 /* Alamofire */; };
+		60B3FD6023D467EB003269C2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3FD5F23D467EB003269C2 /* AuthService.swift */; };
+		60B3FD6323D47958003269C2 /* BoxKit in Frameworks */ = {isa = PBXBuildFile; productRef = 60B3FD6223D47958003269C2 /* BoxKit */; };
+		60B3FD6523D4799A003269C2 /* BoxKit in Frameworks */ = {isa = PBXBuildFile; productRef = 60B3FD6423D4799A003269C2 /* BoxKit */; };
+		60B3FD6723D47A83003269C2 /* NetworkAPI+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3FD6623D47A83003269C2 /* NetworkAPI+Auth.swift */; };
+		60B3FD6B23D484C4003269C2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3FD6A23D484C4003269C2 /* LoginView.swift */; };
 		60B67BF223D45A2300E8295A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B67BF123D45A2300E8295A /* AppDelegate.swift */; };
 		60B67BF423D45A2300E8295A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B67BF323D45A2300E8295A /* SceneDelegate.swift */; };
 		60B67BF723D45A2300E8295A /* PullRequestBoomer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60B67BF523D45A2300E8295A /* PullRequestBoomer.xcdatamodeld */; };
@@ -77,6 +85,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		60B3FD5A23D4679C003269C2 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		60B3FD5F23D467EB003269C2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		60B3FD6623D47A83003269C2 /* NetworkAPI+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkAPI+Auth.swift"; sourceTree = "<group>"; };
+		60B3FD6A23D484C4003269C2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		60B67BEE23D45A2300E8295A /* PullRequestBoomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullRequestBoomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B67BF123D45A2300E8295A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60B67BF323D45A2300E8295A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +120,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				60B67C3F23D45B6C00E8295A /* Model.framework in Frameworks */,
+				60B3FD6323D47958003269C2 /* BoxKit in Frameworks */,
+				60B3FD5723D46772003269C2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B3FD5E23D467A6003269C2 /* Alamofire in Frameworks */,
+				60B3FD6523D4799A003269C2 /* BoxKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +159,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60B3FD5823D4677D003269C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60B3FD5923D46783003269C2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				60B3FD5A23D4679C003269C2 /* NetworkAPI.swift */,
+				60B3FD5F23D467EB003269C2 /* AuthService.swift */,
+				60B3FD6623D47A83003269C2 /* NetworkAPI+Auth.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		60B3FD5C23D467A6003269C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		60B67BE523D45A2300E8295A = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +193,7 @@
 				60B67C0A23D45A2800E8295A /* PullRequestBoomerTests */,
 				60B67C1523D45A2800E8295A /* PullRequestBoomerUITests */,
 				60B67BEF23D45A2300E8295A /* Products */,
+				60B3FD5C23D467A6003269C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +216,7 @@
 				60B67BF123D45A2300E8295A /* AppDelegate.swift */,
 				60B67BF323D45A2300E8295A /* SceneDelegate.swift */,
 				60B67BF823D45A2300E8295A /* ContentView.swift */,
+				60B3FD6A23D484C4003269C2 /* LoginView.swift */,
 				60B67BFA23D45A2700E8295A /* Assets.xcassets */,
 				60B67C2423D45A6200E8295A /* PullRequestBoomer.entitlements */,
 				60B67C0223D45A2700E8295A /* Info.plist */,
@@ -213,6 +255,8 @@
 		60B67C2B23D45B6C00E8295A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				60B3FD5923D46783003269C2 /* Service */,
+				60B3FD5823D4677D003269C2 /* Model */,
 				60B67C2C23D45B6C00E8295A /* Model.h */,
 				60B67C2D23D45B6C00E8295A /* Info.plist */,
 			);
@@ -257,6 +301,10 @@
 				60B67C3E23D45B6C00E8295A /* PBXTargetDependency */,
 			);
 			name = PullRequestBoomer;
+			packageProductDependencies = (
+				60B3FD5623D46772003269C2 /* Alamofire */,
+				60B3FD6223D47958003269C2 /* BoxKit */,
+			);
 			productName = PullRequestBoomer;
 			productReference = 60B67BEE23D45A2300E8295A /* PullRequestBoomer.app */;
 			productType = "com.apple.product-type.application";
@@ -311,6 +359,10 @@
 			dependencies = (
 			);
 			name = Model;
+			packageProductDependencies = (
+				60B3FD5D23D467A6003269C2 /* Alamofire */,
+				60B3FD6423D4799A003269C2 /* BoxKit */,
+			);
 			productName = Model;
 			productReference = 60B67C2A23D45B6C00E8295A /* Model.framework */;
 			productType = "com.apple.product-type.framework";
@@ -357,6 +409,7 @@
 					};
 					60B67C2923D45B6C00E8295A = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					60B67C3123D45B6C00E8295A = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -373,6 +426,10 @@
 				Base,
 			);
 			mainGroup = 60B67BE523D45A2300E8295A;
+			packageReferences = (
+				60B3FD5523D46772003269C2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				60B3FD6123D47958003269C2 /* XCRemoteSwiftPackageReference "box-kit-ios" */,
+			);
 			productRefGroup = 60B67BEF23D45A2300E8295A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -436,6 +493,7 @@
 				60B67BF723D45A2300E8295A /* PullRequestBoomer.xcdatamodeld in Sources */,
 				60B67BF223D45A2300E8295A /* AppDelegate.swift in Sources */,
 				60B67BF923D45A2300E8295A /* ContentView.swift in Sources */,
+				60B3FD6B23D484C4003269C2 /* LoginView.swift in Sources */,
 				60B67BF423D45A2300E8295A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +518,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B3FD6723D47A83003269C2 /* NetworkAPI+Auth.swift in Sources */,
+				60B3FD5B23D4679C003269C2 /* NetworkAPI.swift in Sources */,
+				60B3FD6023D467EB003269C2 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +691,7 @@
 		60B67C1C23D45A2800E8295A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PullRequestBoomer/PullRequestBoomer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -657,6 +719,7 @@
 		60B67C1D23D45A2800E8295A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PullRequestBoomer/PullRequestBoomer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -687,6 +750,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				INFOPLIST_FILE = PullRequestBoomerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -708,6 +772,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				INFOPLIST_FILE = PullRequestBoomerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -728,6 +793,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				INFOPLIST_FILE = PullRequestBoomerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -747,6 +813,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				INFOPLIST_FILE = PullRequestBoomerUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -764,6 +831,7 @@
 		60B67C4223D45B6C00E8295A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -780,6 +848,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.utrpanic.Model;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -790,6 +859,7 @@
 		60B67C4323D45B6C00E8295A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -818,6 +888,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				INFOPLIST_FILE = ModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -837,6 +908,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				INFOPLIST_FILE = ModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -909,6 +981,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		60B3FD5523D46772003269C2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		60B3FD6123D47958003269C2 /* XCRemoteSwiftPackageReference "box-kit-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/utrpanic/box-kit-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60B3FD5623D46772003269C2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B3FD5523D46772003269C2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		60B3FD5D23D467A6003269C2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B3FD5523D46772003269C2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		60B3FD6223D47958003269C2 /* BoxKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B3FD6123D47958003269C2 /* XCRemoteSwiftPackageReference "box-kit-ios" */;
+			productName = BoxKit;
+		};
+		60B3FD6423D4799A003269C2 /* BoxKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B3FD6123D47958003269C2 /* XCRemoteSwiftPackageReference "box-kit-ios" */;
+			productName = BoxKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		60B67BF523D45A2300E8295A /* PullRequestBoomer.xcdatamodeld */ = {
