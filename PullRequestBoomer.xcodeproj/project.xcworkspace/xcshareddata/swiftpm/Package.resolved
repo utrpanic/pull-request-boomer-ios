@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": null,
+          "revision": "747c8db8d57b68d5e35275f10c92d55f982adbd4",
+          "version": "4.9.1"
+        }
+      },
+      {
+        "package": "AnyCodable",
+        "repositoryURL": "https://github.com/Flight-School/AnyCodable",
+        "state": {
+          "branch": null,
+          "revision": "6e9610258e9f1044b5e0d88545052846448b43c3",
+          "version": "0.2.3"
+        }
+      },
+      {
+        "package": "BoxKit",
+        "repositoryURL": "https://github.com/utrpanic/box-kit-ios",
+        "state": {
+          "branch": null,
+          "revision": "d5b91ba303403cc94d8c2d1f8224ddabe7f2c9b6",
+          "version": "2.1.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -8,15 +8,18 @@
 
 import UIKit
 import CoreData
+import FirebaseCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        self.setupLibraries()
         return true
+    }
+    
+    private func setupLibraries() {
+        FirebaseApp.configure()
     }
 
     // MARK: UISceneSession Lifecycle
@@ -77,6 +80,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
-
