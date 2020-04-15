@@ -1,15 +1,5 @@
-//
-//  API.swift
-//  Model
-//
-//  Created by box-jeon-mac-mini on 2020/01/19.
-//  Copyright © 2020 utrpanic. All rights reserved.
-//
-
-import Foundation
-
 import Alamofire
-import AnyCodable
+import BoxKit
 
 typealias RawResponse = [String: AnyDecodable]
 
@@ -18,13 +8,12 @@ typealias APICompletion<T> = (T) -> Void
 class NetworkAPI {
     
     private func headers() -> HTTPHeaders {
-        var headers = HTTPHeaders()
-        return headers
+        return HTTPHeaders()
     }
     
     func get(_ URL: URLConvertible, showLog: Bool) {
         let method: HTTPMethod = .get
-        let request = Alamofire.request(URL, method: method, parameters: nil, encoding: URLEncoding.default, headers: self.headers())
+        let request = AF.request(URL, method: method, parameters: nil, encoding: URLEncoding.default, headers: self.headers())
         request.log(showLog)
         request.responseJSON { (response) -> Void in
             response.log(showLog)
