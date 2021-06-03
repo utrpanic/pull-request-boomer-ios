@@ -1,6 +1,0 @@
-framework module FirebaseCrashlytics {
-umbrella header "FirebaseCrashlytics.h"
-export *
-module * { export * }
-  link "c++"
-}
