@@ -1,8 +1,8 @@
 public class AuthService {
     
-    let api: AuthApiProtocol
+    private let api: AuthApiProtocol
     
-    init(api: AuthApiProtocol) {
+    public init(api: AuthApiProtocol) {
         self.api = api
     }
 }

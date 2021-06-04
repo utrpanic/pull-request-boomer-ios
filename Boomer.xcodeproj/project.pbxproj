@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,9 @@
 		6023A54526690F2F00F8C57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54426690F2F00F8C57A /* Assets.xcassets */; };
 		6023A54826690F2F00F8C57A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54726690F2F00F8C57A /* Preview Assets.xcassets */; };
 		6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */; };
-		60ADF8F3266A69A200B7D861 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* ContentView.swift */; };
+		60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* LoginView.swift */; };
+		60ADF8F6266A6E4100B7D861 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F5266A6E4100B7D861 /* LoginController.swift */; };
+		60ADF8F8266A6FC500B7D861 /* BoomerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 60ADF8F7266A6FC500B7D861 /* BoomerLib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +26,9 @@
 		6023A54A26690F2F00F8C57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6023A54C26690F2F00F8C57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60ADF8EF266A694000B7D861 /* BoomerLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BoomerLib; sourceTree = "<group>"; };
-		60ADF8F2266A69A200B7D861 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		60ADF8F2266A69A200B7D861 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Boomer.entitlements; sourceTree = "<group>"; };
+		60ADF8F5266A6E4100B7D861 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60ADF8F8266A6FC500B7D861 /* BoomerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +67,8 @@
 				6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */,
 				6023A53E26690F2E00F8C57A /* AppDelegate.swift */,
 				6023A54026690F2E00F8C57A /* SceneDelegate.swift */,
-				60ADF8F2266A69A200B7D861 /* ContentView.swift */,
+				60ADF8F2266A69A200B7D861 /* LoginView.swift */,
+				60ADF8F5266A6E4100B7D861 /* LoginController.swift */,
 				6023A54426690F2F00F8C57A /* Assets.xcassets */,
 				6023A54C26690F2F00F8C57A /* Info.plist */,
 				60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */,
@@ -104,6 +109,7 @@
 			);
 			name = Boomer;
 			packageProductDependencies = (
+				60ADF8F7266A6FC500B7D861 /* BoomerLib */,
 			);
 			productName = Boomer;
 			productReference = 6023A53B26690F2E00F8C57A /* Boomer.app */;
@@ -160,8 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6023A53F26690F2E00F8C57A /* AppDelegate.swift in Sources */,
+				60ADF8F6266A6E4100B7D861 /* LoginController.swift in Sources */,
 				6023A54126690F2E00F8C57A /* SceneDelegate.swift in Sources */,
-				60ADF8F3266A69A200B7D861 /* ContentView.swift in Sources */,
+				60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +374,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60ADF8F7266A6FC500B7D861 /* BoomerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BoomerLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6023A53326690F2E00F8C57A /* Project object */;
 }

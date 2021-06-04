@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Boomer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BoomerLib"
+               BuildableName = "BoomerLib"
+               BlueprintName = "BoomerLib"
+               ReferencedContainer = "container:BoomerLib">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
