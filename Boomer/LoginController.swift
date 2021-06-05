@@ -1,3 +1,4 @@
+import SafariServices
 import SwiftUI
 
 import Service
@@ -17,6 +18,7 @@ class LoginController: UIHostingController<LoginView>, LoginViewListener {
     
     // MARK: - LoginViewListener
     func loginViewLoginTapped() {
-        
+        let loginUrl = self.service.loginUrl
+        UIApplication.shared.open(loginUrl, completionHandler: nil)
     }    
 }
