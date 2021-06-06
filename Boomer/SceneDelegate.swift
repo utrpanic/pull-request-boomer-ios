@@ -1,9 +1,13 @@
-import UIKit
 import SwiftUI
+import UIKit
+
+import Service
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var authService = AuthService(api: AuthApi())
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -11,9 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = LoginController(rootView: LoginView())
-            self.window = window
             window.makeKeyAndVisible()
+            self.window = window
+            self.startApplication()
+        }
+    }
+    
+    private func startApplication() {
+        if self.authService.samIsLoggedIn {
+            self.window?.rootViewController = MainController(rootView: MainView())
+        } else {
+            self.window?.rootViewController = LoginController(rootView: LoginView())
         }
     }
     
@@ -21,7 +33,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let context = URLContexts.first else {
             fatalError("Open url called without a context. This should never happen.")
         }
-        
+        if self.authService.handleLoginSuccess(url: context.url) {
+                
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

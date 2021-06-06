@@ -1,16 +1,16 @@
 import SwiftUI
 
-protocol LoginViewListener: AnyObject {
+protocol LoginViewDelegate: AnyObject {
     func loginViewLoginTapped()
 }
 
 struct LoginView: View {
     
-    weak var listener: LoginViewListener?
+    weak var delegate: LoginViewDelegate?
     
     var body: some View {
         Button("GitHub Login") {
-            self.listener?.loginViewLoginTapped()
+            self.delegate?.loginViewLoginTapped()
         }
     }
 }

@@ -3,13 +3,13 @@ import SwiftUI
 
 import Service
 
-class LoginController: UIHostingController<LoginView>, LoginViewListener {
+class LoginController: UIHostingController<LoginView>, LoginViewDelegate {
     
     var service: AuthService = AuthService(api: AuthApi())
     
     override init(rootView: LoginView) {
         super.init(rootView: rootView)
-        self.rootView.listener = self
+        self.rootView.delegate = self
     }
     
     @objc required dynamic init?(coder aDecoder: NSCoder) {
