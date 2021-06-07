@@ -1,11 +1,9 @@
-import Foundation
+import UIKit
 
 public class AuthService {
     
     private let api: AuthApiProtocol
     private let userDefaults: UserDefaults = .standard
-    
-    public var loginUrl: URL { self.api.loginUrl }
     
     private var authToken: String? {
         get { self.userDefaults.string(forKey: "authToken") }
@@ -16,6 +14,14 @@ public class AuthService {
     
     public init(api: AuthApiProtocol) {
         self.api = api
+    }
+    
+    public func login() {
+        UIApplication.shared.open(self.api.loginUrl, completionHandler: nil)
+    }
+    
+    public func logout() {
+        self.authToken = nil
     }
     
     public func handleLoginSuccess(url: URL) -> Bool {

@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol MainViewDelegate: AnyObject {
+protocol MainViewDelegate: SettingsViewDelegate {
     
 }
 
@@ -9,7 +9,18 @@ struct MainView: View {
     weak var delegate: MainViewDelegate?
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            PullRequestsView()
+                .tabItem {
+                    Image(systemName: "phone.fill")
+                    Text("First Tab")
+                }
+            SettingsView(delegate: self.delegate)
+                .tabItem {
+                    Image(systemName: "tv.fill")
+                    Text("Second Tab")
+                }
+        }
     }
 }
 
