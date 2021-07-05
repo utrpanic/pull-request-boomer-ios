@@ -2,10 +2,13 @@ import SwiftUI
 import UIKit
 
 import BoomerLib
+import ModernRIBs
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var launchRouter: LaunchRouting?
     
     var authService = AuthService(api: AuthApi())
 
@@ -14,18 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         if let windowScene = scene as? UIWindowScene {
+            let router = MainBuilder(dependency: AppComponent()).build()
             let window = UIWindow(windowScene: windowScene)
-            window.makeKeyAndVisible()
+            router.launch(from: window)
             self.window = window
-            self.startApplication()
-        }
-    }
-    
-    private func startApplication() {
-        if self.authService.samIsLoggedIn {
-            self.window?.rootViewController = MainController(rootView: MainView())
-        } else {
-            self.window?.rootViewController = LoginController(rootView: LoginView())
         }
     }
     
