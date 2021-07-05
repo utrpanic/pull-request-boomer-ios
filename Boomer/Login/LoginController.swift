@@ -1,6 +1,6 @@
 import SwiftUI
 
-import Service
+import BoomerLib
 
 class LoginController: UIHostingController<LoginView>, LoginViewDelegate {
     

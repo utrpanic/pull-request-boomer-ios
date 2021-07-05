@@ -1,6 +1,6 @@
 import SwiftUI
 
-import Service
+import BoomerLib
 
 final class MainController: UIHostingController<MainView>, MainViewDelegate {
     

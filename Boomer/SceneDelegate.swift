@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-import Service
+import BoomerLib
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

@@ -19,6 +19,11 @@
 		60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* LoginView.swift */; };
 		60ADF8F6266A6E4100B7D861 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F5266A6E4100B7D861 /* LoginController.swift */; };
 		60ADF8F8266A6FC500B7D861 /* BoomerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 60ADF8F7266A6FC500B7D861 /* BoomerLib */; };
+		60B086B526934FD20037D370 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B126934FD20037D370 /* RootRouter.swift */; };
+		60B086B626934FD20037D370 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B226934FD20037D370 /* RootViewController.swift */; };
+		60B086B726934FD20037D370 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B326934FD20037D370 /* RootBuilder.swift */; };
+		60B086B826934FD20037D370 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B426934FD20037D370 /* RootInteractor.swift */; };
+		60B086BD269352FD0037D370 /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 60B086BC269352FD0037D370 /* ModernRIBs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,10 @@
 		60ADF8F2266A69A200B7D861 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Boomer.entitlements; sourceTree = "<group>"; };
 		60ADF8F5266A6E4100B7D861 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		60B086B126934FD20037D370 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		60B086B226934FD20037D370 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		60B086B326934FD20037D370 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
+		60B086B426934FD20037D370 /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60ADF8F8266A6FC500B7D861 /* BoomerLib in Frameworks */,
+				60B086BD269352FD0037D370 /* ModernRIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,15 +82,15 @@
 		6023A53D26690F2E00F8C57A /* Boomer */ = {
 			isa = PBXGroup;
 			children = (
+				60B086BA26934FFA0037D370 /* Main */,
+				60B086B926934FE50037D370 /* Login */,
 				6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */,
 				6023A53E26690F2E00F8C57A /* AppDelegate.swift */,
 				6023A54026690F2E00F8C57A /* SceneDelegate.swift */,
-				60ADF8F5266A6E4100B7D861 /* LoginController.swift */,
-				60ADF8F2266A69A200B7D861 /* LoginView.swift */,
-				60A6B800266CEA510088634D /* MainController.swift */,
-				60A6B7FE266CEA340088634D /* MainView.swift */,
-				608259FB266E636500FF28DE /* PullRequestsView.swift */,
-				608259F9266E632200FF28DE /* SettingsView.swift */,
+				60B086B126934FD20037D370 /* RootRouter.swift */,
+				60B086B426934FD20037D370 /* RootInteractor.swift */,
+				60B086B326934FD20037D370 /* RootBuilder.swift */,
+				60B086B226934FD20037D370 /* RootViewController.swift */,
 				6023A54426690F2F00F8C57A /* Assets.xcassets */,
 				6023A54C26690F2F00F8C57A /* Info.plist */,
 				60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */,
@@ -104,6 +114,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		60B086B926934FE50037D370 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				60ADF8F5266A6E4100B7D861 /* LoginController.swift */,
+				60ADF8F2266A69A200B7D861 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		60B086BA26934FFA0037D370 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				60A6B800266CEA510088634D /* MainController.swift */,
+				60A6B7FE266CEA340088634D /* MainView.swift */,
+				608259FB266E636500FF28DE /* PullRequestsView.swift */,
+				608259F9266E632200FF28DE /* SettingsView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +152,7 @@
 			name = Boomer;
 			packageProductDependencies = (
 				60ADF8F7266A6FC500B7D861 /* BoomerLib */,
+				60B086BC269352FD0037D370 /* ModernRIBs */,
 			);
 			productName = Boomer;
 			productReference = 6023A53B26690F2E00F8C57A /* Boomer.app */;
@@ -150,6 +181,9 @@
 				Base,
 			);
 			mainGroup = 6023A53226690F2E00F8C57A;
+			packageReferences = (
+				60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */,
+			);
 			productRefGroup = 6023A53C26690F2E00F8C57A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -177,10 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B086B726934FD20037D370 /* RootBuilder.swift in Sources */,
+				60B086B626934FD20037D370 /* RootViewController.swift in Sources */,
 				608259FA266E632200FF28DE /* SettingsView.swift in Sources */,
 				6023A53F26690F2E00F8C57A /* AppDelegate.swift in Sources */,
 				60ADF8F6266A6E4100B7D861 /* LoginController.swift in Sources */,
 				6023A54126690F2E00F8C57A /* SceneDelegate.swift in Sources */,
+				60B086B826934FD20037D370 /* RootInteractor.swift in Sources */,
+				60B086B526934FD20037D370 /* RootRouter.swift in Sources */,
 				60A6B7FF266CEA340088634D /* MainView.swift in Sources */,
 				60A6B801266CEA510088634D /* MainController.swift in Sources */,
 				608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */,
@@ -391,10 +429,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DevYeom/ModernRIBs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		60ADF8F7266A6FC500B7D861 /* BoomerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BoomerLib;
+		};
+		60B086BC269352FD0037D370 /* ModernRIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */;
+			productName = ModernRIBs;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
