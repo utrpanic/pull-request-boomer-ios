@@ -4,7 +4,7 @@ protocol MainDependency: Dependency {
     var samIsLoggedIn: Bool { get }
 }
 
-final class MainComponent: Component<MainDependency> {
+final class MainComponent: Component<MainDependency>, PullRequestsDependency, SettingsDependency {
 
 }
 
@@ -19,9 +19,16 @@ final class MainBuilder: Builder<MainDependency>, MainBuildable {
     }
 
     func build() -> LaunchRouting {
-        _ = MainComponent(dependency: self.dependency)
-        let viewController = MainViewController()
         let interactor = MainInteractor()
-        return MainRouter(interactor: interactor, viewController: viewController)
+        let viewController = MainViewController()
+        let component = MainComponent(dependency: self.dependency)
+        let pullRequestsBuilder = PullRequestsBuilder(dependency: component)
+        let settingsBuilder = SettingsBuilder(dependency: component)
+        return MainRouter(
+            interactor: interactor,
+            viewController: viewController,
+            pullRequestsBuilder: pullRequestsBuilder,
+            settingsBuilder: settingsBuilder
+        )
     }
 }

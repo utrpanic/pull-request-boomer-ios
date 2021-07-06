@@ -13,15 +13,24 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var authService = AuthService(api: AuthApi())
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        if let windowScene = scene as? UIWindowScene {
-            let router = MainBuilder(dependency: AppComponent()).build()
-            let window = UIWindow(windowScene: windowScene)
-            router.launch(from: window)
-            self.window = window
-        }
+        
+        self.setupAppearance()
+        
+        self.startApplication(with: scene)
+    }
+    
+    private func setupAppearance() {
+        UIView.appearance().backgroundColor = UIColor.systemBackground
+        UIView.appearance().tintColor = UIColor.systemPink
+    }
+    
+    private func startApplication(with scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        let launchRouter = MainBuilder(dependency: AppComponent()).build()
+        let window = UIWindow(windowScene: windowScene)
+        launchRouter.launch(from: window)
+        self.launchRouter = launchRouter
+        self.window = window
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
