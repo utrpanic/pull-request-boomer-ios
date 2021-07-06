@@ -1,5 +1,6 @@
-import ModernRIBs
 import UIKit
+
+import ModernRIBs
 
 protocol PullRequestsPresentableListener: AnyObject {
 
@@ -22,7 +23,7 @@ final class PullRequestsViewController: UIViewController, PullRequestsPresentabl
     private func setupTabBarItem() {
         self.tabBarItem = UITabBarItem(
             title: "PullRequests",
-            image: UIImage(systemName: "phone.fill"),
+            image: UIImage(systemName: "list.bullet"),
             selectedImage: nil
         )
     }

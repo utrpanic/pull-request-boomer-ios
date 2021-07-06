@@ -1,5 +1,5 @@
-import SwiftUI
 import UIKit
+import SwiftUI
 
 import BoomerLib
 import ModernRIBs
@@ -20,8 +20,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func setupAppearance() {
-        UIView.appearance().backgroundColor = UIColor.systemBackground
-        UIView.appearance().tintColor = UIColor.systemPink
+        UIView.appearance().tintColor = UIColor(named: "accent")
     }
     
     private func startApplication(with scene: UIScene) {

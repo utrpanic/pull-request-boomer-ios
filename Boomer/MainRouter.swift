@@ -1,5 +1,6 @@
-import ModernRIBs
 import UIKit
+
+import ModernRIBs
 
 protocol MainInteractable: Interactable, PullRequestsListener, SettingsListener {
     var router: MainRouting? { get set }

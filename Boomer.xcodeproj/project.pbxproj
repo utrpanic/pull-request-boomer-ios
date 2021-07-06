@@ -16,6 +16,7 @@
 		601D014E2694963100DD5DBF /* SettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D014A2694963100DD5DBF /* SettingsBuilder.swift */; };
 		601D014F2694963100DD5DBF /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D014B2694963100DD5DBF /* SettingsInteractor.swift */; };
 		601D015226949B7100DD5DBF /* Ribs+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D015126949B7100DD5DBF /* Ribs+Extension.swift */; };
+		601D01542694BE0E00DD5DBF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 601D01532694BE0E00DD5DBF /* Colors.xcassets */; };
 		6023A53F26690F2E00F8C57A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6023A53E26690F2E00F8C57A /* AppDelegate.swift */; };
 		6023A54126690F2E00F8C57A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6023A54026690F2E00F8C57A /* SceneDelegate.swift */; };
 		6023A54526690F2F00F8C57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54426690F2F00F8C57A /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		601D014A2694963100DD5DBF /* SettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilder.swift; sourceTree = "<group>"; };
 		601D014B2694963100DD5DBF /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		601D015126949B7100DD5DBF /* Ribs+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ribs+Extension.swift"; sourceTree = "<group>"; };
+		601D01532694BE0E00DD5DBF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6023A53B26690F2E00F8C57A /* Boomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6023A53E26690F2E00F8C57A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6023A54026690F2E00F8C57A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				60B086B326934FD20037D370 /* MainBuilder.swift */,
 				60B086C026935C310037D370 /* MainViewController.swift */,
 				6023A54426690F2F00F8C57A /* Assets.xcassets */,
+				601D01532694BE0E00DD5DBF /* Colors.xcassets */,
 				6023A54C26690F2F00F8C57A /* Info.plist */,
 				60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */,
 				6023A54626690F2F00F8C57A /* Preview Content */,
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */,
+				601D01542694BE0E00DD5DBF /* Colors.xcassets in Resources */,
 				6023A54826690F2F00F8C57A /* Preview Assets.xcassets in Resources */,
 				6023A54526690F2F00F8C57A /* Assets.xcassets in Resources */,
 			);
@@ -409,6 +413,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Boomer/Boomer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Boomer/Preview Content\"";
@@ -434,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Boomer/Boomer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Boomer/Preview Content\"";

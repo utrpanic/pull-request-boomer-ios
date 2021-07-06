@@ -1,5 +1,6 @@
-import ModernRIBs
 import UIKit
+
+import ModernRIBs
 
 protocol SettingsPresentableListener: AnyObject {
     
@@ -22,7 +23,7 @@ final class SettingsViewController: UIViewController, SettingsPresentable, Setti
     private func setupTabBarItem() {
         self.tabBarItem = UITabBarItem(
             title: "Settings",
-            image: UIImage(systemName: "phone.fill"),
+            image: UIImage(systemName: "gearshape"),
             selectedImage: nil
         )
     }
