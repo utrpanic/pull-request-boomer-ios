@@ -19,10 +19,10 @@ final class PullRequestsBuilder: Builder<PullRequestsDependency>, PullRequestsBu
     }
 
     func build(withListener listener: PullRequestsListener) -> PullRequestsRouting {
-        _ = PullRequestsComponent(dependency: dependency)
-        let viewController = PullRequestsViewController()
-        let interactor = PullRequestsInteractor(presenter: viewController)
+        let interactor = PullRequestsInteractor()
         interactor.listener = listener
+        let viewController = PullRequestsViewController()
+        _ = PullRequestsComponent(dependency: dependency)
         return PullRequestsRouter(interactor: interactor, viewController: viewController)
     }
 }

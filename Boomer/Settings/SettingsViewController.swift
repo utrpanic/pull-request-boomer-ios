@@ -6,7 +6,7 @@ protocol SettingsPresentableListener: AnyObject {
     
 }
 
-final class SettingsViewController: UIViewController, SettingsPresentable, SettingsViewControllable {
+final class SettingsViewController: UIViewController, SettingsViewControllable {
     
     weak var listener: SettingsPresentableListener?
     

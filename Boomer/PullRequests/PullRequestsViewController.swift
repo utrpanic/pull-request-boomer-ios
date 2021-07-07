@@ -6,7 +6,7 @@ protocol PullRequestsPresentableListener: AnyObject {
 
 }
 
-final class PullRequestsViewController: UIViewController, PullRequestsPresentable, PullRequestsViewControllable {
+final class PullRequestsViewController: UIViewController, PullRequestsViewControllable {
     
     weak var listener: PullRequestsPresentableListener?
     

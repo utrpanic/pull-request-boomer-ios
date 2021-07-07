@@ -19,10 +19,10 @@ final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {
     }
 
     func build(withListener listener: SettingsListener) -> SettingsRouting {
-        _ = SettingsComponent(dependency: dependency)
-        let viewController = SettingsViewController()
-        let interactor = SettingsInteractor(presenter: viewController)
+        let interactor = SettingsInteractor()
         interactor.listener = listener
+        let viewController = SettingsViewController()
+        _ = SettingsComponent(dependency: dependency)
         return SettingsRouter(interactor: interactor, viewController: viewController)
     }
 }

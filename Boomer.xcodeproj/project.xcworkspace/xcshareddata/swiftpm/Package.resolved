@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "AnyCodable",
+        "repositoryURL": "https://github.com/Flight-School/AnyCodable",
+        "state": {
+          "branch": null,
+          "revision": "69261f239f0fffaf51495dadc4f8483fbfe97025",
+          "version": "0.6.1"
+        }
+      },
+      {
+        "package": "box-kit-ios",
+        "repositoryURL": "https://github.com/utrpanic/box-kit-ios",
+        "state": {
+          "branch": null,
+          "revision": "1a989fcb34f25a68d1fcdeab53e38c02c36e5f64",
+          "version": "2.2.0"
+        }
+      },
+      {
         "package": "ModernRIBs",
         "repositoryURL": "https://github.com/DevYeom/ModernRIBs.git",
         "state": {
