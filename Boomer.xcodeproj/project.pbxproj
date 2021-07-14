@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6016B715269F355600893FFB /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6016B714269F355600893FFB /* UIKit+Extension.swift */; };
+		601D01442694960D00DD5DBF /* PullRequestsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01402694960D00DD5DBF /* PullRequestsRouter.swift */; };
+		601D01452694960D00DD5DBF /* PullRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01412694960D00DD5DBF /* PullRequestsViewController.swift */; };
+		601D01462694960D00DD5DBF /* PullRequestsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01422694960D00DD5DBF /* PullRequestsBuilder.swift */; };
+		601D01472694960D00DD5DBF /* PullRequestsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01432694960D00DD5DBF /* PullRequestsInteractor.swift */; };
+		601D014C2694963100DD5DBF /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01482694963100DD5DBF /* SettingsRouter.swift */; };
+		601D014D2694963100DD5DBF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01492694963100DD5DBF /* SettingsViewController.swift */; };
+		601D014E2694963100DD5DBF /* SettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D014A2694963100DD5DBF /* SettingsBuilder.swift */; };
+		601D014F2694963100DD5DBF /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D014B2694963100DD5DBF /* SettingsInteractor.swift */; };
+		601D015226949B7100DD5DBF /* Ribs+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D015126949B7100DD5DBF /* Ribs+Extension.swift */; };
+		601D01542694BE0E00DD5DBF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 601D01532694BE0E00DD5DBF /* Colors.xcassets */; };
 		6023A53F26690F2E00F8C57A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6023A53E26690F2E00F8C57A /* AppDelegate.swift */; };
 		6023A54126690F2E00F8C57A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6023A54026690F2E00F8C57A /* SceneDelegate.swift */; };
 		6023A54526690F2F00F8C57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54426690F2F00F8C57A /* Assets.xcassets */; };
@@ -14,14 +25,32 @@
 		6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */; };
 		608259FA266E632200FF28DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259F9266E632200FF28DE /* SettingsView.swift */; };
 		608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259FB266E636500FF28DE /* PullRequestsView.swift */; };
-		60A6B7FF266CEA340088634D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6B7FE266CEA340088634D /* MainView.swift */; };
-		60A6B801266CEA510088634D /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6B800266CEA510088634D /* MainController.swift */; };
 		60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* LoginView.swift */; };
-		60ADF8F6266A6E4100B7D861 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F5266A6E4100B7D861 /* LoginController.swift */; };
-		60ADF8F8266A6FC500B7D861 /* BoomerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 60ADF8F7266A6FC500B7D861 /* BoomerLib */; };
+		60B086B526934FD20037D370 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B126934FD20037D370 /* MainRouter.swift */; };
+		60B086B726934FD20037D370 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B326934FD20037D370 /* MainBuilder.swift */; };
+		60B086B826934FD20037D370 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B426934FD20037D370 /* MainInteractor.swift */; };
+		60B086BD269352FD0037D370 /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 60B086BC269352FD0037D370 /* ModernRIBs */; };
+		60B086BF269355260037D370 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086BE269355260037D370 /* AppComponent.swift */; };
+		60B086C126935C310037D370 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086C026935C310037D370 /* MainViewController.swift */; };
+		60B798EE2694C436004A77B6 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798EA2694C436004A77B6 /* LoginRouter.swift */; };
+		60B798EF2694C436004A77B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798EB2694C436004A77B6 /* LoginViewController.swift */; };
+		60B798F02694C436004A77B6 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798EC2694C436004A77B6 /* LoginBuilder.swift */; };
+		60B798F12694C436004A77B6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798ED2694C436004A77B6 /* LoginInteractor.swift */; };
+		60D2250E269F2B2E009BB9A7 /* BoomerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 60D2250D269F2B2E009BB9A7 /* BoomerLib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6016B714269F355600893FFB /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
+		601D01402694960D00DD5DBF /* PullRequestsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsRouter.swift; sourceTree = "<group>"; };
+		601D01412694960D00DD5DBF /* PullRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsViewController.swift; sourceTree = "<group>"; };
+		601D01422694960D00DD5DBF /* PullRequestsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsBuilder.swift; sourceTree = "<group>"; };
+		601D01432694960D00DD5DBF /* PullRequestsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsInteractor.swift; sourceTree = "<group>"; };
+		601D01482694963100DD5DBF /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		601D01492694963100DD5DBF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		601D014A2694963100DD5DBF /* SettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilder.swift; sourceTree = "<group>"; };
+		601D014B2694963100DD5DBF /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		601D015126949B7100DD5DBF /* Ribs+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ribs+Extension.swift"; sourceTree = "<group>"; };
+		601D01532694BE0E00DD5DBF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6023A53B26690F2E00F8C57A /* Boomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6023A53E26690F2E00F8C57A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6023A54026690F2E00F8C57A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,12 +60,17 @@
 		6023A54C26690F2F00F8C57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		608259F9266E632200FF28DE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		608259FB266E636500FF28DE /* PullRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsView.swift; sourceTree = "<group>"; };
-		60A6B7FE266CEA340088634D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		60A6B800266CEA510088634D /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		60ADF8EF266A694000B7D861 /* BoomerLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BoomerLib; sourceTree = "<group>"; };
 		60ADF8F2266A69A200B7D861 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Boomer.entitlements; sourceTree = "<group>"; };
-		60ADF8F5266A6E4100B7D861 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		60B086B126934FD20037D370 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		60B086B326934FD20037D370 /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		60B086B426934FD20037D370 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		60B086BE269355260037D370 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		60B086C026935C310037D370 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		60B798EA2694C436004A77B6 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		60B798EB2694C436004A77B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		60B798EC2694C436004A77B6 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		60B798ED2694C436004A77B6 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,13 +78,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60ADF8F8266A6FC500B7D861 /* BoomerLib in Frameworks */,
+				60D2250E269F2B2E009BB9A7 /* BoomerLib in Frameworks */,
+				60B086BD269352FD0037D370 /* ModernRIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		601D013E269495C600DD5DBF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				601D01482694963100DD5DBF /* SettingsRouter.swift */,
+				601D014B2694963100DD5DBF /* SettingsInteractor.swift */,
+				601D014A2694963100DD5DBF /* SettingsBuilder.swift */,
+				601D01492694963100DD5DBF /* SettingsViewController.swift */,
+				608259F9266E632200FF28DE /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		601D013F269495E200DD5DBF /* PullRequests */ = {
+			isa = PBXGroup;
+			children = (
+				601D01402694960D00DD5DBF /* PullRequestsRouter.swift */,
+				601D01432694960D00DD5DBF /* PullRequestsInteractor.swift */,
+				601D01422694960D00DD5DBF /* PullRequestsBuilder.swift */,
+				601D01412694960D00DD5DBF /* PullRequestsViewController.swift */,
+				608259FB266E636500FF28DE /* PullRequestsView.swift */,
+			);
+			path = PullRequests;
+			sourceTree = "<group>";
+		};
+		601D015026949B5B00DD5DBF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				601D015126949B7100DD5DBF /* Ribs+Extension.swift */,
+				6016B714269F355600893FFB /* UIKit+Extension.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		6023A53226690F2E00F8C57A = {
 			isa = PBXGroup;
 			children = (
@@ -72,18 +140,21 @@
 		6023A53D26690F2E00F8C57A /* Boomer */ = {
 			isa = PBXGroup;
 			children = (
+				601D015026949B5B00DD5DBF /* Common */,
+				60B086B926934FE50037D370 /* Login */,
+				601D013F269495E200DD5DBF /* PullRequests */,
+				601D013E269495C600DD5DBF /* Settings */,
 				6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */,
 				6023A53E26690F2E00F8C57A /* AppDelegate.swift */,
 				6023A54026690F2E00F8C57A /* SceneDelegate.swift */,
-				60ADF8F5266A6E4100B7D861 /* LoginController.swift */,
-				60ADF8F2266A69A200B7D861 /* LoginView.swift */,
-				60A6B800266CEA510088634D /* MainController.swift */,
-				60A6B7FE266CEA340088634D /* MainView.swift */,
-				608259FB266E636500FF28DE /* PullRequestsView.swift */,
-				608259F9266E632200FF28DE /* SettingsView.swift */,
+				60B086BE269355260037D370 /* AppComponent.swift */,
+				60B086B126934FD20037D370 /* MainRouter.swift */,
+				60B086B426934FD20037D370 /* MainInteractor.swift */,
+				60B086B326934FD20037D370 /* MainBuilder.swift */,
+				60B086C026935C310037D370 /* MainViewController.swift */,
 				6023A54426690F2F00F8C57A /* Assets.xcassets */,
+				601D01532694BE0E00DD5DBF /* Colors.xcassets */,
 				6023A54C26690F2F00F8C57A /* Info.plist */,
-				60ADF8F4266A6A5800B7D861 /* Boomer.entitlements */,
 				6023A54626690F2F00F8C57A /* Preview Content */,
 			);
 			path = Boomer;
@@ -104,6 +175,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		60B086B926934FE50037D370 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				60B798EA2694C436004A77B6 /* LoginRouter.swift */,
+				60B798ED2694C436004A77B6 /* LoginInteractor.swift */,
+				60B798EC2694C436004A77B6 /* LoginBuilder.swift */,
+				60B798EB2694C436004A77B6 /* LoginViewController.swift */,
+				60ADF8F2266A69A200B7D861 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,7 +204,8 @@
 			);
 			name = Boomer;
 			packageProductDependencies = (
-				60ADF8F7266A6FC500B7D861 /* BoomerLib */,
+				60B086BC269352FD0037D370 /* ModernRIBs */,
+				60D2250D269F2B2E009BB9A7 /* BoomerLib */,
 			);
 			productName = Boomer;
 			productReference = 6023A53B26690F2E00F8C57A /* Boomer.app */;
@@ -150,6 +234,9 @@
 				Base,
 			);
 			mainGroup = 6023A53226690F2E00F8C57A;
+			packageReferences = (
+				60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */,
+			);
 			productRefGroup = 6023A53C26690F2E00F8C57A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -165,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */,
+				601D01542694BE0E00DD5DBF /* Colors.xcassets in Resources */,
 				6023A54826690F2F00F8C57A /* Preview Assets.xcassets in Resources */,
 				6023A54526690F2F00F8C57A /* Assets.xcassets in Resources */,
 			);
@@ -177,14 +265,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B086B726934FD20037D370 /* MainBuilder.swift in Sources */,
 				608259FA266E632200FF28DE /* SettingsView.swift in Sources */,
 				6023A53F26690F2E00F8C57A /* AppDelegate.swift in Sources */,
-				60ADF8F6266A6E4100B7D861 /* LoginController.swift in Sources */,
+				601D014F2694963100DD5DBF /* SettingsInteractor.swift in Sources */,
+				60B086C126935C310037D370 /* MainViewController.swift in Sources */,
+				60B798EE2694C436004A77B6 /* LoginRouter.swift in Sources */,
+				601D014C2694963100DD5DBF /* SettingsRouter.swift in Sources */,
+				601D015226949B7100DD5DBF /* Ribs+Extension.swift in Sources */,
 				6023A54126690F2E00F8C57A /* SceneDelegate.swift in Sources */,
-				60A6B7FF266CEA340088634D /* MainView.swift in Sources */,
-				60A6B801266CEA510088634D /* MainController.swift in Sources */,
+				60B798EF2694C436004A77B6 /* LoginViewController.swift in Sources */,
+				60B086B826934FD20037D370 /* MainInteractor.swift in Sources */,
+				60B086B526934FD20037D370 /* MainRouter.swift in Sources */,
+				601D01462694960D00DD5DBF /* PullRequestsBuilder.swift in Sources */,
+				601D014E2694963100DD5DBF /* SettingsBuilder.swift in Sources */,
+				60B798F02694C436004A77B6 /* LoginBuilder.swift in Sources */,
 				608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */,
+				601D01472694960D00DD5DBF /* PullRequestsInteractor.swift in Sources */,
+				60B086BF269355260037D370 /* AppComponent.swift in Sources */,
 				60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */,
+				60B798F12694C436004A77B6 /* LoginInteractor.swift in Sources */,
+				601D01452694960D00DD5DBF /* PullRequestsViewController.swift in Sources */,
+				601D01442694960D00DD5DBF /* PullRequestsRouter.swift in Sources */,
+				6016B715269F355600893FFB /* UIKit+Extension.swift in Sources */,
+				601D014D2694963100DD5DBF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Boomer/Boomer.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Boomer/Preview Content\"";
 				DEVELOPMENT_TEAM = L94QTT73WH;
@@ -336,10 +440,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.utrpanic.boomer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -348,7 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Boomer/Boomer.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Boomer/Preview Content\"";
 				DEVELOPMENT_TEAM = L94QTT73WH;
@@ -361,10 +465,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.utrpanic.boomer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -391,8 +495,24 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DevYeom/ModernRIBs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		60ADF8F7266A6FC500B7D861 /* BoomerLib */ = {
+		60B086BC269352FD0037D370 /* ModernRIBs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */;
+			productName = ModernRIBs;
+		};
+		60D2250D269F2B2E009BB9A7 /* BoomerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BoomerLib;
 		};

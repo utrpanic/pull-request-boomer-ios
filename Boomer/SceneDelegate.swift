@@ -1,32 +1,35 @@
-import SwiftUI
 import UIKit
+import SwiftUI
 
-import Service
+import BoomerLib
+import ModernRIBs
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var mainRouter: MainRouting?
     
     var authService = AuthService(api: AuthApi())
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.makeKeyAndVisible()
-            self.window = window
-            self.startApplication()
-        }
+        
+        self.setupAppearance()
+        
+        self.startApplication(with: scene)
     }
     
-    private func startApplication() {
-        if self.authService.samIsLoggedIn {
-            self.window?.rootViewController = MainController(rootView: MainView())
-        } else {
-            self.window?.rootViewController = LoginController(rootView: LoginView())
-        }
+    private func setupAppearance() {
+        UIView.appearance().tintColor = UIColor(named: "accent")
+    }
+    
+    private func startApplication(with scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        let mainRouter = MainBuilder(dependency: AppComponent()).build()
+        let window = UIWindow(windowScene: windowScene)
+        (mainRouter as? LaunchRouting)?.launch(from: window)
+        self.mainRouter = mainRouter
+        self.window = window
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -34,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Open url called without a context. This should never happen.")
         }
         if self.authService.handleLoginSuccess(url: context.url) {
-                
+            self.mainRouter?.detachLogin()
         }
     }
 
