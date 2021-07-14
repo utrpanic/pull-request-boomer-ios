@@ -2,13 +2,13 @@ import UIKit
 
 import ModernRIBs
 
-protocol SettingsPresentableListener: AnyObject {
+protocol SettingsViewListener: AnyObject {
     
 }
 
 final class SettingsViewController: UIViewController, SettingsViewControllable {
     
-    weak var listener: SettingsPresentableListener?
+    weak var listener: SettingsViewListener?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

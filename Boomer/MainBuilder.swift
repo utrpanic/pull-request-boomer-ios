@@ -11,7 +11,7 @@ final class MainComponent: Component<MainDependency>,
 }
 
 protocol MainBuildable: Buildable {
-    func build() -> LaunchRouting
+    func build() -> MainRouting
 }
 
 final class MainBuilder: Builder<MainDependency>, MainBuildable {
@@ -20,7 +20,7 @@ final class MainBuilder: Builder<MainDependency>, MainBuildable {
         super.init(dependency: dependency)
     }
 
-    func build() -> LaunchRouting {
+    func build() -> MainRouting {
         let interactor = MainInteractor()
         let viewController = MainViewController()
         let component = MainComponent(dependency: self.dependency)

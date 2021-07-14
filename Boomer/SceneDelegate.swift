@@ -8,7 +8,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    var launchRouter: LaunchRouting?
+    var mainRouter: MainRouting?
     
     var authService = AuthService(api: AuthApi())
 
@@ -25,10 +25,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func startApplication(with scene: UIScene) {
         guard let windowScene = scene as? UIWindowScene else { return }
-        let launchRouter = MainBuilder(dependency: AppComponent()).build()
+        let mainRouter = MainBuilder(dependency: AppComponent()).build()
         let window = UIWindow(windowScene: windowScene)
-        launchRouter.launch(from: window)
-        self.launchRouter = launchRouter
+        (mainRouter as? LaunchRouting)?.launch(from: window)
+        self.mainRouter = mainRouter
         self.window = window
     }
     
@@ -37,7 +37,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Open url called without a context. This should never happen.")
         }
         if self.authService.handleLoginSuccess(url: context.url) {
-                
+            self.mainRouter?.detachLogin()
         }
     }
 

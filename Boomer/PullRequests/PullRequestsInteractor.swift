@@ -8,7 +8,7 @@ protocol PullRequestsListener: AnyObject {
     
 }
 
-final class PullRequestsInteractor: Interactor, PullRequestsInteractable, PullRequestsPresentableListener {
+final class PullRequestsInteractor: Interactor, PullRequestsInteractable, PullRequestsViewListener {
     weak var router: PullRequestsRouting?
     weak var listener: PullRequestsListener?
 }

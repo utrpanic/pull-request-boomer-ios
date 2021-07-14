@@ -2,13 +2,13 @@ import UIKit
 
 import ModernRIBs
 
-protocol PullRequestsPresentableListener: AnyObject {
+protocol PullRequestsViewListener: AnyObject {
 
 }
 
 final class PullRequestsViewController: UIViewController, PullRequestsViewControllable {
     
-    weak var listener: PullRequestsPresentableListener?
+    weak var listener: PullRequestsViewListener?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

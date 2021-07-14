@@ -1,7 +1,12 @@
+import Combine
+import UIKit
+
+import BoomerLib
 import ModernRIBs
 
 protocol MainRouting: ViewableRouting {
-    func routeToLogin()
+    func attachLogin()
+    func detachLogin()
 }
 
 protocol MainListener: AnyObject {
@@ -14,6 +19,6 @@ final class MainInteractor: Interactor, MainInteractable, MainViewListener {
     
     override func didBecomeActive() {
         super.didBecomeActive()
-//        self.router?.routeToLogin()
+        self.router?.attachLogin()
     }
 }

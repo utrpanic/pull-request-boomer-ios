@@ -39,11 +39,20 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
     }
     
     // MARK: - MainRouting
-    func routeToLogin() {
+    
+    func attachLogin() {
         let login = self.loginBuilder.build(withListener: self.interactor)
         self.attachChild(login)
         let current = self.viewControllable
         let child = login.viewControllable
-        current.presentFullScreen(child, animated: true, completion: nil)
+        current.presentViewControllable(child, animated: true, style: .fullScreen, completion: nil)
+    }
+    
+    func detachLogin() {
+        guard let login = self.lastChild(typeOf: LoginRouting.self) else { return }
+        self.detachChild(login)
+        let current = self.viewControllable
+        let child = login.viewControllable
+        current.dismissViewControllable(child, animated: true, completion: nil)
     }
 }
