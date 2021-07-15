@@ -1,7 +1,12 @@
+import BoomerLib
 import ModernRIBs
 
-protocol SettingsDependency: Dependency {
+extension RibletName {
+    static var settings: String { #function }
+}
 
+protocol SettingsDependency: Dependency {
+    var buildableFactory: BuildableFactoryProtocol { get }
 }
 
 final class SettingsComponent: Component<SettingsDependency> {
@@ -13,10 +18,6 @@ protocol SettingsBuildable: Buildable {
 }
 
 final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {
-
-    override init(dependency: SettingsDependency) {
-        super.init(dependency: dependency)
-    }
 
     func build(withListener listener: SettingsListener) -> SettingsRouting {
         let interactor = SettingsInteractor()

@@ -23,13 +23,13 @@
 		6023A54526690F2F00F8C57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54426690F2F00F8C57A /* Assets.xcassets */; };
 		6023A54826690F2F00F8C57A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54726690F2F00F8C57A /* Preview Assets.xcassets */; };
 		6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */; };
+		607375D526A0693900A9638F /* BuildableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607375D426A0693900A9638F /* BuildableFactory.swift */; };
 		608259FA266E632200FF28DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259F9266E632200FF28DE /* SettingsView.swift */; };
 		608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259FB266E636500FF28DE /* PullRequestsView.swift */; };
 		60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* LoginView.swift */; };
 		60B086B526934FD20037D370 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B126934FD20037D370 /* MainRouter.swift */; };
 		60B086B726934FD20037D370 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B326934FD20037D370 /* MainBuilder.swift */; };
 		60B086B826934FD20037D370 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B426934FD20037D370 /* MainInteractor.swift */; };
-		60B086BD269352FD0037D370 /* ModernRIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 60B086BC269352FD0037D370 /* ModernRIBs */; };
 		60B086BF269355260037D370 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086BE269355260037D370 /* AppComponent.swift */; };
 		60B086C126935C310037D370 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086C026935C310037D370 /* MainViewController.swift */; };
 		60B798EE2694C436004A77B6 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798EA2694C436004A77B6 /* LoginRouter.swift */; };
@@ -58,6 +58,7 @@
 		6023A54726690F2F00F8C57A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6023A54A26690F2F00F8C57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6023A54C26690F2F00F8C57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		607375D426A0693900A9638F /* BuildableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildableFactory.swift; sourceTree = "<group>"; };
 		608259F9266E632200FF28DE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		608259FB266E636500FF28DE /* PullRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsView.swift; sourceTree = "<group>"; };
 		60ADF8EF266A694000B7D861 /* BoomerLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BoomerLib; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				60D2250E269F2B2E009BB9A7 /* BoomerLib in Frameworks */,
-				60B086BD269352FD0037D370 /* ModernRIBs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +147,7 @@
 				6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */,
 				6023A53E26690F2E00F8C57A /* AppDelegate.swift */,
 				6023A54026690F2E00F8C57A /* SceneDelegate.swift */,
+				607375D426A0693900A9638F /* BuildableFactory.swift */,
 				60B086BE269355260037D370 /* AppComponent.swift */,
 				60B086B126934FD20037D370 /* MainRouter.swift */,
 				60B086B426934FD20037D370 /* MainInteractor.swift */,
@@ -204,7 +205,6 @@
 			);
 			name = Boomer;
 			packageProductDependencies = (
-				60B086BC269352FD0037D370 /* ModernRIBs */,
 				60D2250D269F2B2E009BB9A7 /* BoomerLib */,
 			);
 			productName = Boomer;
@@ -235,7 +235,6 @@
 			);
 			mainGroup = 6023A53226690F2E00F8C57A;
 			packageReferences = (
-				60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */,
 			);
 			productRefGroup = 6023A53C26690F2E00F8C57A /* Products */;
 			projectDirPath = "";
@@ -288,6 +287,7 @@
 				601D01452694960D00DD5DBF /* PullRequestsViewController.swift in Sources */,
 				601D01442694960D00DD5DBF /* PullRequestsRouter.swift in Sources */,
 				6016B715269F355600893FFB /* UIKit+Extension.swift in Sources */,
+				607375D526A0693900A9638F /* BuildableFactory.swift in Sources */,
 				601D014D2694963100DD5DBF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,23 +495,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DevYeom/ModernRIBs.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		60B086BC269352FD0037D370 /* ModernRIBs */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 60B086BB269352FD0037D370 /* XCRemoteSwiftPackageReference "ModernRIBs" */;
-			productName = ModernRIBs;
-		};
 		60D2250D269F2B2E009BB9A7 /* BoomerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BoomerLib;

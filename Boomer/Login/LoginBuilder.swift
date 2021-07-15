@@ -1,8 +1,12 @@
-import ModernRIBs
 import BoomerLib
+import ModernRIBs
+
+extension RibletName {
+    static var login: String { #function }
+}
 
 protocol LoginDependency: Dependency {
-
+    var buildableFactory: BuildableFactoryProtocol { get }
 }
 
 final class LoginComponent: Component<LoginDependency> {
@@ -14,10 +18,6 @@ protocol LoginBuildable: Buildable {
 }
 
 final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
-
-    override init(dependency: LoginDependency) {
-        super.init(dependency: dependency)
-    }
 
     func build(withListener listener: LoginListener) -> LoginRouting {
         let service = AuthService(api: AuthApi())

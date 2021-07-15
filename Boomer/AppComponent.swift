@@ -3,6 +3,8 @@ import ModernRIBs
 
 final class AppComponent: Component<EmptyDependency>, MainDependency {
     
+    var buildableFactory: BuildableFactoryProtocol = BuildableFactory()
+    
     private var authService = AuthService(api: AuthApi())
     
     var samIsLoggedIn: Bool { self.authService.samIsLoggedIn }

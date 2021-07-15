@@ -1,6 +1,8 @@
+import BoomerLib
 import ModernRIBs
 
 protocol MainDependency: Dependency {
+    var buildableFactory: BuildableFactoryProtocol { get }
     var samIsLoggedIn: Bool { get }
 }
 
@@ -8,6 +10,19 @@ final class MainComponent: Component<MainDependency>,
                            LoginDependency,
                            PullRequestsDependency,
                            SettingsDependency {
+    var buildableFactory: BuildableFactoryProtocol { self.dependency.buildableFactory }
+}
+
+extension MainComponent: MainRouterDependency {
+    var loginBuilder: LoginBuildable {
+        return self.buildableFactory.create(ribletName: RibletName.login, dependency: self) as! LoginBuildable
+    }
+    var pullRequestBuilder: PullRequestsBuildable {
+        return self.buildableFactory.create(ribletName: RibletName.pullRequests, dependency: self) as! PullRequestsBuildable
+    }
+    var settingsBuilder: SettingsBuildable {
+        return self.buildableFactory.create(ribletName: RibletName.settings, dependency: self) as! SettingsBuildable
+    }
 }
 
 protocol MainBuildable: Buildable {
@@ -16,23 +31,14 @@ protocol MainBuildable: Buildable {
 
 final class MainBuilder: Builder<MainDependency>, MainBuildable {
 
-    override init(dependency: MainDependency) {
-        super.init(dependency: dependency)
-    }
-
     func build() -> MainRouting {
         let interactor = MainInteractor()
         let viewController = MainViewController()
         let component = MainComponent(dependency: self.dependency)
-        let loginBuilder = LoginBuilder(dependency: component)
-        let pullRequestsBuilder = PullRequestsBuilder(dependency: component)
-        let settingsBuilder = SettingsBuilder(dependency: component)
         return MainRouter(
             interactor: interactor,
             viewController: viewController,
-            loginBuilder: loginBuilder,
-            pullRequestsBuilder: pullRequestsBuilder,
-            settingsBuilder: settingsBuilder
+            dependency: component
         )
     }
 }

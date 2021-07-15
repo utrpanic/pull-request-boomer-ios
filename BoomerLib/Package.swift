@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(name: "BoxKit", url: "https://github.com/utrpanic/box-kit-ios.git", from: "2.0.0"),
+        .package(name: "ModernRIBs", url: "https://github.com/DevYeom/ModernRIBs.git", .upToNextMajor(from: "1.0.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -23,6 +24,7 @@ let package = Package(
             name: "BoomerLib",
             dependencies: [
                 .product(name: "BoxKit", package: "BoxKit"),
+                .product(name: "ModernRIBs", package: "ModernRIBs")
             ]),
         .testTarget(
             name: "BoomerLibTests",

@@ -1,7 +1,12 @@
+import BoomerLib
 import ModernRIBs
 
+extension RibletName {
+    static var pullRequests: String { #function }
+}
+
 protocol PullRequestsDependency: Dependency {
-    
+    var buildableFactory: BuildableFactoryProtocol { get }
 }
 
 final class PullRequestsComponent: Component<PullRequestsDependency> {
@@ -13,10 +18,6 @@ protocol PullRequestsBuildable: Buildable {
 }
 
 final class PullRequestsBuilder: Builder<PullRequestsDependency>, PullRequestsBuildable {
-
-    override init(dependency: PullRequestsDependency) {
-        super.init(dependency: dependency)
-    }
 
     func build(withListener listener: PullRequestsListener) -> PullRequestsRouting {
         let interactor = PullRequestsInteractor()
