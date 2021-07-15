@@ -1,8 +1,6 @@
 import Foundation
 
-public protocol AuthApiProtocol {
-    var loginUrl: URL { get }
-}
+import InterfaceLib
 
 public class AuthApi: AuthApiProtocol {
     

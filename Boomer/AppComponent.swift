@@ -1,4 +1,5 @@
-import BoomerLib
+import ModelLib
+import InterfaceLib
 import ModernRIBs
 
 final class AppComponent: Component<EmptyDependency>, MainDependency {

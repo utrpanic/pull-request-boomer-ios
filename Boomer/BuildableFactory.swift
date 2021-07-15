@@ -1,7 +1,10 @@
-import BoomerLib
+import InterfaceLib
+import ModelLib
 import ModernRIBs
 
 class BuildableFactory: BuildableFactoryProtocol {
+    
+    var authApi: AuthApiProtocol { AuthApi() }
     
     func create(ribletName: String, dependency: Dependency) -> Buildable {
         switch ribletName {

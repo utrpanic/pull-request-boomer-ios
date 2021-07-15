@@ -24,6 +24,8 @@
 		6023A54826690F2F00F8C57A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54726690F2F00F8C57A /* Preview Assets.xcassets */; };
 		6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */; };
 		607375D526A0693900A9638F /* BuildableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607375D426A0693900A9638F /* BuildableFactory.swift */; };
+		607375D726A092E300A9638F /* InterfaceLib in Frameworks */ = {isa = PBXBuildFile; productRef = 607375D626A092E300A9638F /* InterfaceLib */; };
+		607375D926A097E000A9638F /* ModelLib in Frameworks */ = {isa = PBXBuildFile; productRef = 607375D826A097E000A9638F /* ModelLib */; };
 		608259FA266E632200FF28DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259F9266E632200FF28DE /* SettingsView.swift */; };
 		608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259FB266E636500FF28DE /* PullRequestsView.swift */; };
 		60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* LoginView.swift */; };
@@ -36,7 +38,6 @@
 		60B798EF2694C436004A77B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798EB2694C436004A77B6 /* LoginViewController.swift */; };
 		60B798F02694C436004A77B6 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798EC2694C436004A77B6 /* LoginBuilder.swift */; };
 		60B798F12694C436004A77B6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B798ED2694C436004A77B6 /* LoginInteractor.swift */; };
-		60D2250E269F2B2E009BB9A7 /* BoomerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 60D2250D269F2B2E009BB9A7 /* BoomerLib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60D2250E269F2B2E009BB9A7 /* BoomerLib in Frameworks */,
+				607375D926A097E000A9638F /* ModelLib in Frameworks */,
+				607375D726A092E300A9638F /* InterfaceLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +207,8 @@
 			);
 			name = Boomer;
 			packageProductDependencies = (
-				60D2250D269F2B2E009BB9A7 /* BoomerLib */,
+				607375D626A092E300A9638F /* InterfaceLib */,
+				607375D826A097E000A9638F /* ModelLib */,
 			);
 			productName = Boomer;
 			productReference = 6023A53B26690F2E00F8C57A /* Boomer.app */;
@@ -496,9 +499,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		60D2250D269F2B2E009BB9A7 /* BoomerLib */ = {
+		607375D626A092E300A9638F /* InterfaceLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = BoomerLib;
+			productName = InterfaceLib;
+		};
+		607375D826A097E000A9638F /* ModelLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ModelLib;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

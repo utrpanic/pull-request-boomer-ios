@@ -1,4 +1,5 @@
-import BoomerLib
+import InterfaceLib
+import ModelLib
 import ModernRIBs
 
 protocol MainDependency: Dependency {
@@ -13,7 +14,7 @@ final class MainComponent: Component<MainDependency>,
     var buildableFactory: BuildableFactoryProtocol { self.dependency.buildableFactory }
 }
 
-extension MainComponent: MainRouterDependency {
+extension MainComponent: MainRouterParams {
     var loginBuilder: LoginBuildable {
         return self.buildableFactory.create(ribletName: RibletName.login, dependency: self) as! LoginBuildable
     }
@@ -25,6 +26,10 @@ extension MainComponent: MainRouterDependency {
     }
 }
 
+extension MainComponent: MainInteracterParams {
+    var authService: AuthService { AuthService(api: self.buildableFactory.authApi) }
+}
+
 protocol MainBuildable: Buildable {
     func build() -> MainRouting
 }
@@ -32,13 +37,13 @@ protocol MainBuildable: Buildable {
 final class MainBuilder: Builder<MainDependency>, MainBuildable {
 
     func build() -> MainRouting {
-        let interactor = MainInteractor()
-        let viewController = MainViewController()
         let component = MainComponent(dependency: self.dependency)
+        let interactor = MainInteractor(with: component)
+        let viewController = MainViewController()
         return MainRouter(
             interactor: interactor,
             viewController: viewController,
-            dependency: component
+            params: component
         )
     }
 }

@@ -1,13 +1,5 @@
+import InterfaceLib
 import ModernRIBs
-
-protocol PullRequestsInteractable: Interactable {
-    var router: PullRequestsRouting? { get set }
-    var listener: PullRequestsListener? { get set }
-}
-
-protocol PullRequestsViewControllable: ViewControllable {
-    
-}
 
 final class PullRequestsRouter: ViewableRouter<PullRequestsInteractable, PullRequestsViewControllable>, PullRequestsRouting {
 

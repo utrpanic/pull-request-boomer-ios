@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-import BoomerLib
+import ModelLib
 import ModernRIBs
 
 protocol MainRouting: ViewableRouting {
@@ -13,9 +13,20 @@ protocol MainListener: AnyObject {
     
 }
 
+protocol MainInteracterParams {
+    var authService: AuthService { get }
+}
+
 final class MainInteractor: Interactor, MainInteractable, MainViewListener {
+    
     weak var router: MainRouting?
     weak var listener: MainListener?
+    
+    var authService: AuthService
+    
+    init(with params: MainInteracterParams) {
+        self.authService = params.authService
+    }
     
     override func didBecomeActive() {
         super.didBecomeActive()

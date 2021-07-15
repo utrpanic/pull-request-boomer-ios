@@ -1,20 +1,9 @@
-import BoomerLib
+import ModelLib
+import InterfaceLib
 import ModernRIBs
-
-extension RibletName {
-    static var login: String { #function }
-}
-
-protocol LoginDependency: Dependency {
-    var buildableFactory: BuildableFactoryProtocol { get }
-}
 
 final class LoginComponent: Component<LoginDependency> {
 
-}
-
-protocol LoginBuildable: Buildable {
-    func build(withListener listener: LoginListener) -> LoginRouting
 }
 
 final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {

@@ -1,13 +1,6 @@
+import ModelLib
+import InterfaceLib
 import ModernRIBs
-import BoomerLib
-
-protocol LoginRouting: ViewableRouting {
-
-}
-
-protocol LoginListener: AnyObject {
-
-}
 
 final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
     

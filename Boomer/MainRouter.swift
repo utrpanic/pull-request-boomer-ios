@@ -1,5 +1,6 @@
 import UIKit
 
+import InterfaceLib
 import ModernRIBs
 
 protocol MainInteractable: Interactable,
@@ -14,7 +15,7 @@ protocol MainViewControllable: ViewControllable {
     func setTabs(_ tabs: [ViewControllable])
 }
 
-protocol MainRouterDependency {
+protocol MainRouterParams {
     var loginBuilder: LoginBuildable { get }
     var pullRequestBuilder: PullRequestsBuildable { get }
     var settingsBuilder: SettingsBuildable { get }
@@ -22,19 +23,23 @@ protocol MainRouterDependency {
 
 final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, MainRouting {
     
-    let dependency: MainRouterDependency
+    private let loginBuilder: LoginBuildable
+    private let pullRequestBuilder: PullRequestsBuildable
+    private let settingsBuilder: SettingsBuildable
 
-    init(interactor: MainInteractable, viewController: MainViewControllable, dependency: MainRouterDependency) {
-        self.dependency = dependency
+    init(interactor: MainInteractable, viewController: MainViewControllable, params: MainRouterParams) {
+        self.loginBuilder = params.loginBuilder
+        self.pullRequestBuilder = params.pullRequestBuilder
+        self.settingsBuilder = params.settingsBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
     }
     
     override func didLoad() {
         super.didLoad()
-        let pullRequest = self.dependency.pullRequestBuilder.build(withListener: self.interactor)
+        let pullRequest = self.pullRequestBuilder.build(withListener: self.interactor)
         self.attachChild(pullRequest)
-        let settings = self.dependency.settingsBuilder.build(withListener: self.interactor)
+        let settings = self.settingsBuilder.build(withListener: self.interactor)
         self.attachChild(settings)
         let tabs = [pullRequest, settings].map { $0.viewControllable}
         self.viewController.setTabs(tabs)
@@ -43,7 +48,7 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
     // MARK: - MainRouting
     
     func attachLogin() {
-        let login = self.dependency.loginBuilder.build(withListener: self.interactor)
+        let login = self.loginBuilder.build(withListener: self.interactor)
         self.attachChild(login)
         let current = self.viewControllable
         let child = login.viewControllable

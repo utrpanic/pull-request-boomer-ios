@@ -1,5 +1,7 @@
 import UIKit
 
+import InterfaceLib
+
 public class AuthService {
     
     private let api: AuthApiProtocol

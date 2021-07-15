@@ -1,20 +1,8 @@
-import BoomerLib
+import InterfaceLib
 import ModernRIBs
-
-extension RibletName {
-    static var settings: String { #function }
-}
-
-protocol SettingsDependency: Dependency {
-    var buildableFactory: BuildableFactoryProtocol { get }
-}
 
 final class SettingsComponent: Component<SettingsDependency> {
 
-}
-
-protocol SettingsBuildable: Buildable {
-    func build(withListener listener: SettingsListener) -> SettingsRouting
 }
 
 final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {

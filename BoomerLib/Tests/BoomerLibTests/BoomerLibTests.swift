@@ -1,5 +1,5 @@
 import XCTest
-@testable import BoomerLib
+@testable import ModelLib
 
 final class BoomerLibTests: XCTestCase {
     func testExample() {

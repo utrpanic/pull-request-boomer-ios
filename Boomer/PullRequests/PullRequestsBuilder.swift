@@ -1,20 +1,8 @@
-import BoomerLib
+import InterfaceLib
 import ModernRIBs
-
-extension RibletName {
-    static var pullRequests: String { #function }
-}
-
-protocol PullRequestsDependency: Dependency {
-    var buildableFactory: BuildableFactoryProtocol { get }
-}
 
 final class PullRequestsComponent: Component<PullRequestsDependency> {
 
-}
-
-protocol PullRequestsBuildable: Buildable {
-    func build(withListener listener: PullRequestsListener) -> PullRequestsRouting
 }
 
 final class PullRequestsBuilder: Builder<PullRequestsDependency>, PullRequestsBuildable {
