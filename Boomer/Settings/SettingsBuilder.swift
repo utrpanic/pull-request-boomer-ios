@@ -2,7 +2,7 @@ import InterfaceLib
 import ModernRIBs
 
 final class SettingsComponent: Component<SettingsDependency> {
-
+    
 }
 
 final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {

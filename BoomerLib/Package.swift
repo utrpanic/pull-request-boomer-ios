@@ -38,6 +38,6 @@ let package = Package(
             path: "Sources/InterfaceLib"),
         .testTarget(
             name: "BoomerLibTests",
-            dependencies: ["ModelLib"]),
+            dependencies: ["InterfaceLib", "ModelLib"]),
     ]
 )

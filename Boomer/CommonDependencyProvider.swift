@@ -2,11 +2,11 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-class BuildableFactory: BuildableFactoryProtocol {
+class CommonDependencyProvider: CommonDependencyProviderProtocol {
     
     var authApi: AuthApiProtocol { AuthApi() }
     
-    func create(ribletName: String, dependency: Dependency) -> Buildable {
+    func builder(of ribletName: String, dependency: Dependency) -> Buildable {
         switch ribletName {
         case RibletName.login:
             guard let dependency = dependency as? LoginDependency else { break }

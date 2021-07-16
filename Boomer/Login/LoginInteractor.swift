@@ -2,6 +2,10 @@ import ModelLib
 import InterfaceLib
 import ModernRIBs
 
+protocol LoginInteractorParams {
+    var authService: AuthService { get }
+}
+
 final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
     
     weak var router: LoginRouting?
@@ -9,8 +13,8 @@ final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
     
     let service: AuthService
     
-    init(service: AuthService) {
-        self.service = service
+    init(with params: LoginInteractorParams) {
+        self.service = params.authService
     }
     
     // MARK: - LoginViewListener

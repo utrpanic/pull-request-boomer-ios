@@ -4,7 +4,7 @@ import ModernRIBs
 
 final class AppComponent: Component<EmptyDependency>, MainDependency {
     
-    var buildableFactory: BuildableFactoryProtocol = BuildableFactory()
+    var provider: CommonDependencyProviderProtocol = CommonDependencyProvider()
     
     private var authService = AuthService(api: AuthApi())
     

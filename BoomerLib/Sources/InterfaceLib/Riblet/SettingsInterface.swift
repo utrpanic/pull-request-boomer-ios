@@ -5,7 +5,7 @@ public extension RibletName {
 }
 
 public protocol SettingsDependency: Dependency {
-    var buildableFactory: BuildableFactoryProtocol { get }
+    
 }
 
 public protocol SettingsBuildable: Buildable {
@@ -28,4 +28,3 @@ public protocol SettingsRouting: ViewableRouting {
 public protocol SettingsListener: AnyObject {
     
 }
-

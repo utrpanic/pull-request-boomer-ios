@@ -5,7 +5,7 @@ public extension RibletName {
 }
 
 public protocol LoginDependency: Dependency {
-    var buildableFactory: BuildableFactoryProtocol { get }
+    var provider: CommonDependencyProviderProtocol { get }
 }
 
 public protocol LoginBuildable: Buildable {
