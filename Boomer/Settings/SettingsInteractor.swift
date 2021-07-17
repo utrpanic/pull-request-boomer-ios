@@ -1,6 +1,6 @@
 import InterfaceLib
-import ModernRIBs
 import ModelLib
+import ModernRIBs
 
 public protocol SettingsRouting: ViewableRouting {
     

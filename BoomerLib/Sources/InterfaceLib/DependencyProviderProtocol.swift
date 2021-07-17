@@ -1,19 +1,11 @@
 import ModernRIBs
 
 public protocol HasDependencyProvider {
-    var apis: ApiProviderProtocol { get }
     var buildables: BuildableProviderProtocol { get }
+    var apis: ApiProviderProtocol { get }
 }
 
 extension Component: HasDependencyProvider {
-    
-    public var apis: ApiProviderProtocol {
-        if let dependency = self.dependency as? HasDependencyProvider {
-            return dependency.apis
-        } else {
-            fatalError()
-        }
-    }
     
     public var buildables: BuildableProviderProtocol {
         if let dependency = self.dependency as? HasDependencyProvider {
@@ -22,12 +14,20 @@ extension Component: HasDependencyProvider {
             fatalError()
         }
     }
-}
-
-public protocol ApiProviderProtocol {
-    var auth: AuthApiProtocol { get }
+    
+    public var apis: ApiProviderProtocol {
+        if let dependency = self.dependency as? HasDependencyProvider {
+            return dependency.apis
+        } else {
+            fatalError()
+        }
+    }
 }
 
 public protocol BuildableProviderProtocol {
     subscript<T>(type: T.Type, dependency dependency: Dependency) -> T { get }
+}
+
+public protocol ApiProviderProtocol {
+    var auth: AuthApiProtocol { get }
 }

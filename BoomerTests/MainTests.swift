@@ -1,10 +1,10 @@
 import XCTest
 
-import ModelLib
 import ModernRIBs
 import InterfaceLib
 
 @testable import Boomer
+@testable import ModelLib
 
 final class MainDependencyMock: DependencyMock, MainDependency {
     
@@ -43,7 +43,7 @@ final class MainTests: XCTestCase {
 
     func testLaunchLoggedIn() throws {
         // Arrange
-        
+        self.interactor.authService.api.authToken = "SomeToken"
         // Act
         self.router.launch(from: UIWindow())
         // Assert
@@ -60,7 +60,7 @@ final class MainTests: XCTestCase {
     
     func testLaunchLoggedOut() throws {
         // Arrange
-        
+        self.interactor.authService.api.authToken = nil
         // Act
         self.router.launch(from: UIWindow())
         // Assert

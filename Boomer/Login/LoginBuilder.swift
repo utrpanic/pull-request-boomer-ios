@@ -1,6 +1,10 @@
-import ModelLib
 import InterfaceLib
+import ModelLib
 import ModernRIBs
+
+protocol LoginDependency: Dependency, HasDependencyProvider {
+
+}
 
 final class LoginComponent: Component<LoginDependency> {
     

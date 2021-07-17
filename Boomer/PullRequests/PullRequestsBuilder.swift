@@ -1,6 +1,10 @@
 import InterfaceLib
 import ModernRIBs
 
+protocol PullRequestsDependency: Dependency, HasDependencyProvider {
+    
+}
+
 final class PullRequestsComponent: Component<PullRequestsDependency> {
 
 }

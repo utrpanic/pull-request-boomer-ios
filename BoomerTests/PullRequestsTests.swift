@@ -28,12 +28,15 @@ final class PullRequestsBuilderMock: PullRequestsBuildable {
 
 final class PullRequestsTests: XCTestCase {
     
+    var parentInteractor: PullRequestsParentInteractorMock!
+    var builder: PullRequestsBuilderMock!
     var router: PullRequestsRouter!
     var interactor: PullRequestsInteractor!
 
     override func setUpWithError() throws {
-        let builder = PullRequestsBuilderMock()
-        self.router = builder.build(withListener: PullRequestsParentInteractorMock()) as? PullRequestsRouter
+        self.parentInteractor = PullRequestsParentInteractorMock()
+        self.builder = PullRequestsBuilderMock()
+        self.router = builder.build(withListener: self.parentInteractor) as? PullRequestsRouter
         self.interactor = router.interactor as? PullRequestsInteractor
     }
 

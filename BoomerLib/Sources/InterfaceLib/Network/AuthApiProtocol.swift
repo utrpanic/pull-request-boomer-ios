@@ -1,5 +1,8 @@
 import Foundation
 
-public protocol AuthApiProtocol {
-    var loginUrl: URL { get }
+public protocol AuthApiProtocol: AnyObject {
+    
+    var authToken: String? { get set }
+    
+    func login()
 }

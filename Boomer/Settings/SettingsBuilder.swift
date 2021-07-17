@@ -2,6 +2,10 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
+public protocol SettingsDependency: Dependency, HasDependencyProvider {
+    
+}
+
 final class SettingsComponent: Component<SettingsDependency> {
     
 }

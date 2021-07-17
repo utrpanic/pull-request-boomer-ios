@@ -4,26 +4,20 @@ import InterfaceLib
 
 public final class AuthService {
     
-    private let api: AuthApiProtocol
-    private let userDefaults: UserDefaults = .standard
+    let api: AuthApiProtocol
     
-    private var authToken: String? {
-        get { self.userDefaults.string(forKey: "authToken") }
-        set { self.userDefaults.setValue(newValue, forKey: "authToken") }
-    }
-    
-    public var samIsLoggedIn: Bool { self.authToken != nil }
+    public var samIsLoggedIn: Bool { self.api.authToken != nil }
     
     public init(api: AuthApiProtocol) {
         self.api = api
     }
     
     public func login() {
-        UIApplication.shared.open(self.api.loginUrl, completionHandler: nil)
+        self.api.login()
     }
     
     public func logout() {
-        self.authToken = nil
+        self.api.authToken = nil
     }
     
     public func handleLoginSuccess(url: URL) -> Bool {
@@ -32,7 +26,7 @@ public final class AuthService {
         guard urlComponents?.host == "login" else { return false }
         let quries = urlComponents?.queryItems ?? []
         let authToken = quries.filter { $0.name == "code" }.first?.value
-        self.authToken = authToken
+        self.api.authToken = authToken
         return true
     }
 }
