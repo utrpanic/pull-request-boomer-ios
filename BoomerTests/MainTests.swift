@@ -7,9 +7,6 @@ import InterfaceLib
 @testable import Boomer
 
 class MainDependencyMock: MainDependency {
-    
-    var provider: CommonDependencyProviderProtocol { CommonDependencyProviderMock() }
-    
     var samIsLoggedIn: Bool = false
 }
 

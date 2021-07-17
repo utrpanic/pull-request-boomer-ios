@@ -1,11 +1,7 @@
 import ModernRIBs
 
-public extension RibletName {
-    static var login: String { #function }
-}
-
 public protocol LoginDependency: Dependency {
-    var provider: CommonDependencyProviderProtocol { get }
+
 }
 
 public protocol LoginBuildable: Buildable {

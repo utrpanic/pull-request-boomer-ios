@@ -3,7 +3,6 @@ import ModelLib
 import ModernRIBs
 
 protocol MainDependency: Dependency {
-    var provider: CommonDependencyProviderProtocol { get }
     var samIsLoggedIn: Bool { get }
 }
 
@@ -11,23 +10,24 @@ final class MainComponent: Component<MainDependency>,
                            LoginDependency,
                            PullRequestsDependency,
                            SettingsDependency {
-    var provider: CommonDependencyProviderProtocol { self.dependency.provider }
+    
 }
 
 extension MainComponent: MainRouterParams {
+    
     var loginBuilder: LoginBuildable {
-        return self.provider.builder(of: RibletName.login, dependency: self) as! LoginBuildable
+        return self.buildables[LoginBuildable.self, dependency: self]
     }
     var pullRequestBuilder: PullRequestsBuildable {
-        return self.provider.builder(of: RibletName.pullRequests, dependency: self) as! PullRequestsBuildable
+        return self.buildables[PullRequestsBuildable.self, dependency: self]
     }
     var settingsBuilder: SettingsBuildable {
-        return self.provider.builder(of: RibletName.settings, dependency: self) as! SettingsBuildable
+        return self.buildables[SettingsBuildable.self, dependency: self]
     }
 }
 
 extension MainComponent: MainInteracterParams {
-    var authService: AuthService { AuthService(api: self.provider.authApi) }
+    var authService: AuthService { AuthService(api: self.apis.auth) }
 }
 
 protocol MainBuildable: Buildable {

@@ -1,9 +1,5 @@
 import ModernRIBs
 
-public extension RibletName {
-    static var settings: String { #function }
-}
-
 public protocol SettingsDependency: Dependency {
     
 }

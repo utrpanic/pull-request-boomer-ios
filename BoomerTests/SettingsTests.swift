@@ -11,7 +11,7 @@ class SettingsParentInteractorMock: SettingsListener {
 }
 
 class SettingsDependencyMock: SettingsDependency {
-    var provider: CommonDependencyProviderProtocol { CommonDependencyProviderMock() }
+
 }
 
 class SettingsBuilderMock: SettingsBuildable {

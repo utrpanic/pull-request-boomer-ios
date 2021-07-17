@@ -3,11 +3,11 @@ import InterfaceLib
 import ModernRIBs
 
 final class LoginComponent: Component<LoginDependency> {
-    var provider: CommonDependencyProviderProtocol { self.dependency.provider }
+    
 }
 
 extension LoginComponent: LoginInteractorParams {
-    var authService: AuthService { AuthService(api: self.provider.authApi) }
+    var authService: AuthService { AuthService(api: self.apis.auth) }
 }
 
 final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {

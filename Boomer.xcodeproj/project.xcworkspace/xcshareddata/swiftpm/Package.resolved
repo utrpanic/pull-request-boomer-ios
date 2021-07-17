@@ -11,7 +11,7 @@
         }
       },
       {
-        "package": "box-kit-ios",
+        "package": "BoxKit",
         "repositoryURL": "https://github.com/utrpanic/box-kit-ios.git",
         "state": {
           "branch": null,

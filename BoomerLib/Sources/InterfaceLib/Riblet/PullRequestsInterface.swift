@@ -1,11 +1,7 @@
 import ModernRIBs
 
-public extension RibletName {
-    static var pullRequests: String { #function }
-}
-
 public protocol PullRequestsDependency: Dependency {
-    var provider: CommonDependencyProviderProtocol { get }
+    
 }
 
 public protocol PullRequestsBuildable: Buildable {

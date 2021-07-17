@@ -2,19 +2,35 @@ import ModelLib
 import ModernRIBs
 import InterfaceLib
 
-class CommonDependencyProviderMock: CommonDependencyProviderProtocol {
+extension Component {
     
-    var authApi: AuthApiProtocol { AuthApi() }
+    var apis: ApiProviderProtocol {
+        return self.shared { ApiProviderMock() }
+    }
+    var buildables: BuildableProviderProtocol {
+        return self.shared { BuildableProviderMock() }
+    }
+}
+
+struct ApiProviderMock: ApiProviderProtocol {
+    var auth: AuthApiProtocol { AuthApi() }
+}
+
+struct BuildableProviderMock: BuildableProviderProtocol {
     
-    func builder(of ribletName: String, dependency: Dependency) -> Buildable {
-        switch ribletName {
-        case RibletName.login: return LoginBuilderMock()
-        case RibletName.pullRequests: return PullRequestsBuilderMock()
-        case RibletName.settings: return SettingsBuilderMock()
+    subscript<T>(type: T.Type, dependency dependency: Dependency) -> T {
+        let buildable: Buildable
+        switch String(describing: type) {
+        case String(describing: LoginBuildable.self):
+            buildable = LoginBuilderMock()
+        case String(describing: PullRequestsBuildable.self):
+            buildable = PullRequestsBuilderMock()
+        case String(describing: SettingsBuildable.self):
+            buildable = SettingsBuilderMock()
         default:
-            break
+            fatalError()
         }
-        fatalError()
+        return buildable as! T
     }
 }
 

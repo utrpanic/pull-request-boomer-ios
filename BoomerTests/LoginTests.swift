@@ -11,7 +11,7 @@ class LoginParentInteractorMock: LoginListener {
 }
 
 class LoginDependencyMock: LoginDependency {
-    var provider: CommonDependencyProviderProtocol { CommonDependencyProviderMock() }
+    
 }
 
 class LoginBuilderMock: LoginBuildable {

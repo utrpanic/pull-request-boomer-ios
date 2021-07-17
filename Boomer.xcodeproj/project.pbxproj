@@ -27,7 +27,7 @@
 		6057FD4126A1235400CB230A /* PullRequestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4026A1235400CB230A /* PullRequestsTests.swift */; };
 		6057FD4326A1235F00CB230A /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4226A1235F00CB230A /* LoginTests.swift */; };
 		6057FD4526A1256B00CB230A /* TestCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4426A1256B00CB230A /* TestCommon.swift */; };
-		607375D526A0693900A9638F /* CommonDependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607375D426A0693900A9638F /* CommonDependencyProvider.swift */; };
+		607375D526A0693900A9638F /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607375D426A0693900A9638F /* DependencyProvider.swift */; };
 		607375D726A092E300A9638F /* InterfaceLib in Frameworks */ = {isa = PBXBuildFile; productRef = 607375D626A092E300A9638F /* InterfaceLib */; };
 		607375D926A097E000A9638F /* ModelLib in Frameworks */ = {isa = PBXBuildFile; productRef = 607375D826A097E000A9638F /* ModelLib */; };
 		608259FA266E632200FF28DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259F9266E632200FF28DE /* SettingsView.swift */; };
@@ -78,7 +78,7 @@
 		6057FD4026A1235400CB230A /* PullRequestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsTests.swift; sourceTree = "<group>"; };
 		6057FD4226A1235F00CB230A /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		6057FD4426A1256B00CB230A /* TestCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCommon.swift; sourceTree = "<group>"; };
-		607375D426A0693900A9638F /* CommonDependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDependencyProvider.swift; sourceTree = "<group>"; };
+		607375D426A0693900A9638F /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		608259F9266E632200FF28DE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		608259FB266E636500FF28DE /* PullRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsView.swift; sourceTree = "<group>"; };
 		60ADF8EF266A694000B7D861 /* BoomerLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BoomerLib; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 				6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */,
 				6023A53E26690F2E00F8C57A /* AppDelegate.swift */,
 				6023A54026690F2E00F8C57A /* SceneDelegate.swift */,
-				607375D426A0693900A9638F /* CommonDependencyProvider.swift */,
+				607375D426A0693900A9638F /* DependencyProvider.swift */,
 				60B086BE269355260037D370 /* AppComponent.swift */,
 				60B086B126934FD20037D370 /* MainRouter.swift */,
 				60B086B426934FD20037D370 /* MainInteractor.swift */,
@@ -362,7 +362,7 @@
 				601D01452694960D00DD5DBF /* PullRequestsViewController.swift in Sources */,
 				601D01442694960D00DD5DBF /* PullRequestsRouter.swift in Sources */,
 				6016B715269F355600893FFB /* UIKit+Extension.swift in Sources */,
-				607375D526A0693900A9638F /* CommonDependencyProvider.swift in Sources */,
+				607375D526A0693900A9638F /* DependencyProvider.swift in Sources */,
 				601D014D2694963100DD5DBF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +575,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L94QTT73WH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -599,7 +599,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L94QTT73WH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

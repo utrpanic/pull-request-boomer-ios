@@ -11,7 +11,7 @@ class PullRequestsParentInteractorMock: PullRequestsListener {
 }
 
 class PullRequestsDependencyMock: PullRequestsDependency {
-    var provider: CommonDependencyProviderProtocol { CommonDependencyProviderMock() }
+    
 }
 
 class PullRequestsBuilderMock: PullRequestsBuildable {
