@@ -12,6 +12,8 @@ protocol MainInteractable: Interactable,
 }
 
 protocol MainViewControllable: ViewControllable {
+    func showLaunchView()
+    func hideLaunchView()
     func setTabs(_ tabs: [ViewControllable])
 }
 
@@ -35,23 +37,14 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         interactor.router = self
     }
     
-    override func didLoad() {
-        super.didLoad()
-        let pullRequest = self.pullRequestBuilder.build(withListener: self.interactor)
-        self.attachChild(pullRequest)
-        let settings = self.settingsBuilder.build(withListener: self.interactor)
-        self.attachChild(settings)
-        let tabs = [pullRequest, settings].map { $0.viewControllable}
-        self.viewController.setTabs(tabs)
-    }
-    
     // MARK: - MainRouting
     
     func attachLogin() {
         let login = self.loginBuilder.build(withListener: self.interactor)
         self.attachChild(login)
-        let current = self.viewControllable
+        let current = self.viewController
         let child = login.viewControllable
+        current.hideLaunchView()
         current.presentViewControllable(child, animated: true, style: .fullScreen, completion: nil)
     }
     
@@ -61,5 +54,16 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         let current = self.viewControllable
         let child = login.viewControllable
         current.dismissViewControllable(child, animated: true, completion: nil)
+    }
+    
+    func setMainTabs() {
+        let pullRequest = self.pullRequestBuilder.build(withListener: self.interactor)
+        self.attachChild(pullRequest)
+        let settings = self.settingsBuilder.build(withListener: self.interactor)
+        self.attachChild(settings)
+        let current = self.viewController
+        let tabs = [pullRequest, settings].map { $0.viewControllable }
+        current.setTabs(tabs)
+        current.hideLaunchView()
     }
 }

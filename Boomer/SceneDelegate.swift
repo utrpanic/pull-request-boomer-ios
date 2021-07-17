@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 import InterfaceLib
 import ModelLib
@@ -9,9 +8,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    var mainRouter: MainRouting?
-    
-    var authService = AuthService(api: AuthApi())
+    var launchRouter: LaunchRouting?
+    var urlHandler: UrlHandler?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -26,10 +24,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func startApplication(with scene: UIScene) {
         guard let windowScene = scene as? UIWindowScene else { return }
-        let mainRouter = MainBuilder(dependency: AppComponent()).build()
+        let (launchRouter, urlHandler) = MainBuilder(dependency: AppComponent()).build()
         let window = UIWindow(windowScene: windowScene)
-        (mainRouter as? LaunchRouting)?.launch(from: window)
-        self.mainRouter = mainRouter
+        launchRouter.launch(from: window)
+        self.launchRouter = launchRouter
+        self.urlHandler = urlHandler
         self.window = window
     }
     
@@ -37,9 +36,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let context = URLContexts.first else {
             fatalError("Open url called without a context. This should never happen.")
         }
-        if self.authService.handleLoginSuccess(url: context.url) {
-            self.mainRouter?.detachLogin()
-        }
+        self.urlHandler?.handle(context.url)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -69,4 +66,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+}
+
+protocol UrlHandler {
+    func handle(_ url: URL)
 }

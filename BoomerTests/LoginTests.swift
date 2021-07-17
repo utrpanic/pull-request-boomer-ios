@@ -16,11 +16,12 @@ final class LoginDependencyMock: DependencyMock, LoginDependency {
 
 final class LoginBuilderMock: LoginBuildable {
     
-    func build(withListener listener: LoginListener) -> LoginRouting {
+    func build(withListener listener: LoginListener) -> ViewableRouting {
         let component = LoginComponent(dependency: LoginDependencyMock())
         let interactor = LoginInteractor(with: component)
         interactor.listener = listener
         let viewController = LoginViewController()
+        viewController.listener = interactor
         return LoginRouter(interactor: interactor, viewController: viewController)
     }
 }

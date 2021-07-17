@@ -2,6 +2,10 @@ import ModelLib
 import InterfaceLib
 import ModernRIBs
 
+public protocol LoginRouting: ViewableRouting {
+
+}
+
 protocol LoginInteractorParams {
     var authService: AuthService { get }
 }
@@ -18,6 +22,7 @@ final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
     }
     
     // MARK: - LoginViewListener
+    
     func loginViewLoginTapped() {
         self.service.login()
     }

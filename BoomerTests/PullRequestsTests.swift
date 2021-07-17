@@ -16,11 +16,12 @@ final class PullRequestsDependencyMock: DependencyMock, PullRequestsDependency {
 
 final class PullRequestsBuilderMock: PullRequestsBuildable {
     
-    func build(withListener listener: PullRequestsListener) -> PullRequestsRouting {
-        _ = PullRequestsComponent(dependency: PullRequestsDependencyMock())
-        let interactor = PullRequestsInteractor()
+    func build(withListener listener: PullRequestsListener) -> ViewableRouting {
+        let component = PullRequestsComponent(dependency: PullRequestsDependencyMock())
+        let interactor = PullRequestsInteractor(params: component)
         interactor.listener = listener
         let viewController = PullRequestsViewController()
+        viewController.listener = interactor
         return PullRequestsRouter(interactor: interactor, viewController: viewController)
     }
 }

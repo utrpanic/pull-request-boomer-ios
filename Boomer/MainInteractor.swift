@@ -7,6 +7,7 @@ import ModernRIBs
 protocol MainRouting: ViewableRouting {
     func attachLogin()
     func detachLogin()
+    func setMainTabs()
 }
 
 protocol MainListener: AnyObject {
@@ -24,12 +25,26 @@ final class MainInteractor: Interactor, MainInteractable, MainViewListener {
     
     var authService: AuthService
     
-    init(with params: MainInteracterParams) {
+    init(params: MainInteracterParams) {
         self.authService = params.authService
     }
     
     override func didBecomeActive() {
         super.didBecomeActive()
-        self.router?.attachLogin()
+        if self.authService.samIsLoggedIn {
+            self.router?.setMainTabs()
+        } else {
+            self.router?.attachLogin()
+        }
+    }
+}
+
+extension MainInteractor: UrlHandler {
+    
+    func handle(_ url: URL) {
+        if self.authService.handleLoginSuccess(url: url) {
+            self.router?.setMainTabs()
+            self.router?.detachLogin()
+        }
     }
 }

@@ -1,5 +1,9 @@
 import SwiftUI
 
+protocol LoginViewListener: AnyObject {
+    func loginViewLoginTapped()
+}
+
 struct LoginView: View {
     
     weak var listener: LoginViewListener?

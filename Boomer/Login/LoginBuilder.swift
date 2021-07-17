@@ -12,8 +12,8 @@ extension LoginComponent: LoginInteractorParams {
 
 final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
 
-    func build(withListener listener: LoginListener) -> LoginRouting {
-        let component = LoginComponent(dependency: dependency)
+    func build(withListener listener: LoginListener) -> ViewableRouting {
+        let component = LoginComponent(dependency: self.dependency)
         let interactor = LoginInteractor(with: component)
         interactor.listener = listener
         let viewController = LoginViewController()

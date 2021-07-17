@@ -12,15 +12,16 @@ final class MainDependencyMock: DependencyMock, MainDependency {
 
 final class MainBuilderMock: MainBuildable {
     
-    func build() -> MainRouting {
+    func build() -> (LaunchRouting, UrlHandler) {
         let component = MainComponent(dependency: MainDependencyMock())
-        let interactor = MainInteractor(with: component)
+        let interactor = MainInteractor(params: component)
         let viewController = MainViewController()
-        return MainRouter(
+        let router = MainRouter(
             interactor: interactor,
             viewController: viewController,
             params: component
         )
+        return (router, interactor)
     }
 }
 
@@ -31,18 +32,21 @@ final class MainTests: XCTestCase {
 
     override func setUpWithError() throws {
         let builder = MainBuilderMock()
-        self.router = builder.build() as? MainRouter
-        self.interactor = router.interactor as? MainInteractor
+        let (router, interactor) = builder.build()
+        self.router = router as? MainRouter
+        self.interactor = interactor as? MainInteractor
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testLaunchLoggedIn() throws {
+        // Arrange
         
-        self.router.load()
-        
+        // Act
+        self.router.launch(from: UIWindow())
+        // Assert
         XCTAssertEqual(
             Riblet(self.router),
             Riblet(
@@ -52,15 +56,18 @@ final class MainTests: XCTestCase {
                 ]
             )
         )
+    }
+    
+    func testLaunchLoggedOut() throws {
+        // Arrange
         
-        self.interactor.activate()
-
+        // Act
+        self.router.launch(from: UIWindow())
+        // Assert
         XCTAssertEqual(
             Riblet(self.router),
             Riblet(
                 MainRouter.self, [
-                    Riblet(PullRequestsRouter.self),
-                    Riblet(SettingsRouter.self),
                     Riblet(LoginRouter.self)
                 ]
             )

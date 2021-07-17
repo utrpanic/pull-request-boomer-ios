@@ -16,11 +16,12 @@ final class SettingsDependencyMock: DependencyMock, SettingsDependency {
 
 final class SettingsBuilderMock: SettingsBuildable {
     
-    func build(withListener listener: SettingsListener) -> SettingsRouting {
-        _ = SettingsComponent(dependency: SettingsDependencyMock())
-        let interactor = SettingsInteractor()
+    func build(withListener listener: SettingsListener) -> ViewableRouting {
+        let component = SettingsComponent(dependency: SettingsDependencyMock())
+        let interactor = SettingsInteractor(params: component)
         interactor.listener = listener
         let viewController = SettingsViewController()
+        viewController.listener = interactor
         return SettingsRouter(interactor: interactor, viewController: viewController)
     }
 }

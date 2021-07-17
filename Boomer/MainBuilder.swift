@@ -31,19 +31,20 @@ extension MainComponent: MainInteracterParams {
 }
 
 protocol MainBuildable: Buildable {
-    func build() -> MainRouting
+    func build() -> (LaunchRouting, UrlHandler)
 }
 
 final class MainBuilder: Builder<MainDependency>, MainBuildable {
 
-    func build() -> MainRouting {
+    func build() -> (LaunchRouting, UrlHandler) {
         let component = MainComponent(dependency: self.dependency)
-        let interactor = MainInteractor(with: component)
+        let interactor = MainInteractor(params: component)
         let viewController = MainViewController()
-        return MainRouter(
+        let router = MainRouter(
             interactor: interactor,
             viewController: viewController,
             params: component
         )
+        return (router, interactor)
     }
 }
