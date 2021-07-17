@@ -2,8 +2,8 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-protocol MainDependency: Dependency {
-    var samIsLoggedIn: Bool { get }
+protocol MainDependency: Dependency, HasDependencyProvider {
+    
 }
 
 final class MainComponent: Component<MainDependency>,

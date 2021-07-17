@@ -6,15 +6,15 @@ import InterfaceLib
 
 @testable import Boomer
 
-class LoginParentInteractorMock: LoginListener {
+final class LoginParentInteractorMock: LoginListener {
 
 }
 
-class LoginDependencyMock: LoginDependency {
+final class LoginDependencyMock: DependencyMock, LoginDependency {
     
 }
 
-class LoginBuilderMock: LoginBuildable {
+final class LoginBuilderMock: LoginBuildable {
     
     func build(withListener listener: LoginListener) -> LoginRouting {
         let component = LoginComponent(dependency: LoginDependencyMock())
@@ -25,7 +25,7 @@ class LoginBuilderMock: LoginBuildable {
     }
 }
 
-class LoginTests: XCTestCase {
+final class LoginTests: XCTestCase {
     
     var router: LoginRouter!
     var interactor: LoginInteractor!

@@ -2,13 +2,13 @@ import ModelLib
 import InterfaceLib
 import ModernRIBs
 
-final class AppComponent: Component<EmptyDependency>, MainDependency {
-    
-    private var authService = AuthService(api: AuthApi())
-    
-    var samIsLoggedIn: Bool { self.authService.samIsLoggedIn }
+final class AppDependency: EmptyDependency, HasDependencyProvider {
+    var apis: ApiProviderProtocol = ApiProvider()
+    var buildables: BuildableProviderProtocol = BuildableProvider()
+}
 
+final class AppComponent: Component<EmptyDependency>, MainDependency {
     init() {
-        super.init(dependency: EmptyComponent())
+        super.init(dependency: AppDependency())
     }
 }

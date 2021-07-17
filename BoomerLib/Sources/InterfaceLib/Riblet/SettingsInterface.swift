@@ -1,6 +1,6 @@
 import ModernRIBs
 
-public protocol SettingsDependency: Dependency {
+public protocol SettingsDependency: Dependency, HasDependencyProvider {
     
 }
 

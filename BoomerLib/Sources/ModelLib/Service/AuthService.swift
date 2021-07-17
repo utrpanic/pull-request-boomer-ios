@@ -2,7 +2,7 @@ import UIKit
 
 import InterfaceLib
 
-public class AuthService {
+public final class AuthService {
     
     private let api: AuthApiProtocol
     private let userDefaults: UserDefaults = .standard

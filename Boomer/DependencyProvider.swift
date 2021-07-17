@@ -2,21 +2,11 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-extension Component {
-    
-    var apis: ApiProviderProtocol {
-        return self.shared { ApiProvider() }
-    }
-    var buildables: BuildableProviderProtocol {
-        return self.shared { BuildableProvider() }
-    }
-}
-
-private struct ApiProvider: ApiProviderProtocol {
+final class ApiProvider: ApiProviderProtocol {
     let auth: AuthApiProtocol = AuthApi()
 }
 
-private struct BuildableProvider: BuildableProviderProtocol {
+final class BuildableProvider: BuildableProviderProtocol {
     
     subscript<T>(type: T.Type, dependency dependency: Dependency) -> T {
         let buildable: Buildable

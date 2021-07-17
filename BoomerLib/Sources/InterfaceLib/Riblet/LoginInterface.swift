@@ -1,6 +1,6 @@
 import ModernRIBs
 
-public protocol LoginDependency: Dependency {
+public protocol LoginDependency: Dependency, HasDependencyProvider {
 
 }
 

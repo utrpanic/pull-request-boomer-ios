@@ -1,6 +1,6 @@
 import ModernRIBs
 
-public protocol PullRequestsDependency: Dependency {
+public protocol PullRequestsDependency: Dependency, HasDependencyProvider {
     
 }
 

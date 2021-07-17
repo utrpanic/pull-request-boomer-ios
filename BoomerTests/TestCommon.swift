@@ -2,21 +2,16 @@ import ModelLib
 import ModernRIBs
 import InterfaceLib
 
-extension Component {
-    
-    var apis: ApiProviderProtocol {
-        return self.shared { ApiProviderMock() }
-    }
-    var buildables: BuildableProviderProtocol {
-        return self.shared { BuildableProviderMock() }
-    }
+class DependencyMock: HasDependencyProvider {
+    var apis: ApiProviderProtocol { ApiProviderMock() }
+    var buildables: BuildableProviderProtocol { BuildableProviderMock() }
 }
 
-struct ApiProviderMock: ApiProviderProtocol {
+final class ApiProviderMock: ApiProviderProtocol {
     var auth: AuthApiProtocol { AuthApi() }
 }
 
-struct BuildableProviderMock: BuildableProviderProtocol {
+final class BuildableProviderMock: BuildableProviderProtocol {
     
     subscript<T>(type: T.Type, dependency dependency: Dependency) -> T {
         let buildable: Buildable

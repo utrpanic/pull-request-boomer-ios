@@ -6,26 +6,26 @@ import InterfaceLib
 
 @testable import Boomer
 
-class SettingsParentInteractorMock: SettingsListener {
+final class SettingsParentInteractorMock: SettingsListener {
     
 }
 
-class SettingsDependencyMock: SettingsDependency {
+final class SettingsDependencyMock: DependencyMock, SettingsDependency {
 
 }
 
-class SettingsBuilderMock: SettingsBuildable {
+final class SettingsBuilderMock: SettingsBuildable {
     
     func build(withListener listener: SettingsListener) -> SettingsRouting {
+        _ = SettingsComponent(dependency: SettingsDependencyMock())
         let interactor = SettingsInteractor()
         interactor.listener = listener
         let viewController = SettingsViewController()
-        _ = SettingsComponent(dependency: SettingsDependencyMock())
         return SettingsRouter(interactor: interactor, viewController: viewController)
     }
 }
 
-class SettingsTests: XCTestCase {
+final class SettingsTests: XCTestCase {
     
     var router: SettingsRouter!
     var interactor: SettingsInteractor!

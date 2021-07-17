@@ -6,11 +6,11 @@ import InterfaceLib
 
 @testable import Boomer
 
-class MainDependencyMock: MainDependency {
-    var samIsLoggedIn: Bool = false
+final class MainDependencyMock: DependencyMock, MainDependency {
+    
 }
 
-class MainBuilderMock: MainBuildable {
+final class MainBuilderMock: MainBuildable {
     
     func build() -> MainRouting {
         let component = MainComponent(dependency: MainDependencyMock())
@@ -24,7 +24,7 @@ class MainBuilderMock: MainBuildable {
     }
 }
 
-class MainTests: XCTestCase {
+final class MainTests: XCTestCase {
     
     var router: MainRouter!
     var interactor: MainInteractor!
@@ -67,5 +67,3 @@ class MainTests: XCTestCase {
         )
     }
 }
-
-

@@ -6,26 +6,26 @@ import InterfaceLib
 
 @testable import Boomer
 
-class PullRequestsParentInteractorMock: PullRequestsListener {
+final class PullRequestsParentInteractorMock: PullRequestsListener {
     
 }
 
-class PullRequestsDependencyMock: PullRequestsDependency {
+final class PullRequestsDependencyMock: DependencyMock, PullRequestsDependency {
     
 }
 
-class PullRequestsBuilderMock: PullRequestsBuildable {
+final class PullRequestsBuilderMock: PullRequestsBuildable {
     
     func build(withListener listener: PullRequestsListener) -> PullRequestsRouting {
+        _ = PullRequestsComponent(dependency: PullRequestsDependencyMock())
         let interactor = PullRequestsInteractor()
         interactor.listener = listener
         let viewController = PullRequestsViewController()
-        _ = PullRequestsComponent(dependency: PullRequestsDependencyMock())
         return PullRequestsRouter(interactor: interactor, viewController: viewController)
     }
 }
 
-class PullRequestsTests: XCTestCase {
+final class PullRequestsTests: XCTestCase {
     
     var router: PullRequestsRouter!
     var interactor: PullRequestsInteractor!
