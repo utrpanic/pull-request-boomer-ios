@@ -27,13 +27,16 @@ final class SettingsBuilderMock: SettingsBuildable {
 }
 
 final class SettingsTests: XCTestCase {
-    
+
+    var parentInteractor: SettingsParentInteractorMock!
+    var builder: SettingsBuilderMock!
     var router: SettingsRouter!
     var interactor: SettingsInteractor!
 
     override func setUpWithError() throws {
-        let builder = SettingsBuilderMock()
-        self.router = builder.build(withListener: SettingsParentInteractorMock()) as? SettingsRouter
+        self.parentInteractor = SettingsParentInteractorMock()
+        self.builder = SettingsBuilderMock()
+        self.router = builder.build(withListener: self.parentInteractor) as? SettingsRouter
         self.interactor = self.router.interactor as? SettingsInteractor
     }
 

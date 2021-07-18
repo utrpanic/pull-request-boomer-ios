@@ -28,12 +28,15 @@ final class LoginBuilderMock: LoginBuildable {
 
 final class LoginTests: XCTestCase {
     
+    var parentInteractor: LoginParentInteractorMock!
+    var builder: LoginBuilderMock!
     var router: LoginRouter!
     var interactor: LoginInteractor!
 
     override func setUpWithError() throws {
-        let builder = LoginBuilderMock()
-        self.router = builder.build(withListener: LoginParentInteractorMock()) as? LoginRouter
+        self.parentInteractor = LoginParentInteractorMock()
+        self.builder = LoginBuilderMock()
+        self.router = builder.build(withListener:self.parentInteractor) as? LoginRouter
         self.interactor = router.interactor as? LoginInteractor
     }
 
