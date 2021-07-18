@@ -1,12 +1,13 @@
+import InterfaceLib
+import ModelLib
 import ModernRIBs
-import BoomerLib
 
-protocol LoginRouting: ViewableRouting {
+public protocol LoginRouting: ViewableRouting {
 
 }
 
-protocol LoginListener: AnyObject {
-
+protocol LoginInteractorParams {
+    var authService: AuthService { get }
 }
 
 final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
@@ -16,11 +17,12 @@ final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
     
     let service: AuthService
     
-    init(service: AuthService) {
-        self.service = service
+    init(with params: LoginInteractorParams) {
+        self.service = params.authService
     }
     
     // MARK: - LoginViewListener
+    
     func loginViewLoginTapped() {
         self.service.login()
     }

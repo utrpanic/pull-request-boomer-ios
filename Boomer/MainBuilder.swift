@@ -1,38 +1,50 @@
+import InterfaceLib
+import ModelLib
 import ModernRIBs
 
-protocol MainDependency: Dependency {
-    var samIsLoggedIn: Bool { get }
+protocol MainDependency: Dependency, HasDependencyProvider {
+    
 }
 
 final class MainComponent: Component<MainDependency>,
                            LoginDependency,
                            PullRequestsDependency,
                            SettingsDependency {
+    
+}
+
+extension MainComponent: MainRouterParams {
+    
+    var loginBuilder: LoginBuildable {
+        return self.buildables[LoginBuildable.self, dependency: self]
+    }
+    var pullRequestBuilder: PullRequestsBuildable {
+        return self.buildables[PullRequestsBuildable.self, dependency: self]
+    }
+    var settingsBuilder: SettingsBuildable {
+        return self.buildables[SettingsBuildable.self, dependency: self]
+    }
+}
+
+extension MainComponent: MainInteracterParams {
+    var authService: AuthService { AuthService(api: self.apis.auth) }
 }
 
 protocol MainBuildable: Buildable {
-    func build() -> MainRouting
+    func build() -> (LaunchRouting, UrlHandler)
 }
 
 final class MainBuilder: Builder<MainDependency>, MainBuildable {
 
-    override init(dependency: MainDependency) {
-        super.init(dependency: dependency)
-    }
-
-    func build() -> MainRouting {
-        let interactor = MainInteractor()
-        let viewController = MainViewController()
+    func build() -> (LaunchRouting, UrlHandler) {
         let component = MainComponent(dependency: self.dependency)
-        let loginBuilder = LoginBuilder(dependency: component)
-        let pullRequestsBuilder = PullRequestsBuilder(dependency: component)
-        let settingsBuilder = SettingsBuilder(dependency: component)
-        return MainRouter(
+        let interactor = MainInteractor(params: component)
+        let viewController = MainViewController()
+        let router = MainRouter(
             interactor: interactor,
             viewController: viewController,
-            loginBuilder: loginBuilder,
-            pullRequestsBuilder: pullRequestsBuilder,
-            settingsBuilder: settingsBuilder
+            params: component
         )
+        return (router, interactor)
     }
 }

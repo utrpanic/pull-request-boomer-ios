@@ -1,22 +1,18 @@
-import UIKit
+import SwiftUI
 
+import InterfaceLib
 import ModernRIBs
 
-protocol SettingsViewListener: AnyObject {
+final class SettingsViewController: UIHostingController<SettingsView>, SettingsViewControllable {
     
-}
-
-final class SettingsViewController: UIViewController, SettingsViewControllable {
-    
-    weak var listener: SettingsViewListener?
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.setupTabBarItem()
+    weak var listener: SettingsViewListener? {
+        set { self.rootView.listener = newValue }
+        get { self.rootView.listener }
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    convenience init() {
+        let rootView = SettingsView()
+        self.init(rootView: rootView)
         self.setupTabBarItem()
     }
     

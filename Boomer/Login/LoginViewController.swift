@@ -1,11 +1,7 @@
-import UIKit
 import SwiftUI
 
+import InterfaceLib
 import ModernRIBs
-
-protocol LoginViewListener: AnyObject {
-    func loginViewLoginTapped()
-}
 
 final class LoginViewController: UIHostingController<LoginView>, LoginViewControllable {
 

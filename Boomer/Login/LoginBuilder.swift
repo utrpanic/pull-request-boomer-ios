@@ -1,31 +1,27 @@
+import InterfaceLib
+import ModelLib
 import ModernRIBs
-import BoomerLib
 
-protocol LoginDependency: Dependency {
+protocol LoginDependency: Dependency, HasDependencyProvider {
 
 }
 
 final class LoginComponent: Component<LoginDependency> {
-
+    
 }
 
-protocol LoginBuildable: Buildable {
-    func build(withListener listener: LoginListener) -> LoginRouting
+extension LoginComponent: LoginInteractorParams {
+    var authService: AuthService { AuthService(api: self.apis.auth) }
 }
 
 final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
 
-    override init(dependency: LoginDependency) {
-        super.init(dependency: dependency)
-    }
-
-    func build(withListener listener: LoginListener) -> LoginRouting {
-        let service = AuthService(api: AuthApi())
-        let interactor = LoginInteractor(service: service)
+    func build(withListener listener: LoginListener) -> ViewableRouting {
+        let component = LoginComponent(dependency: self.dependency)
+        let interactor = LoginInteractor(with: component)
         interactor.listener = listener
         let viewController = LoginViewController()
         viewController.listener = interactor
-        _ = LoginComponent(dependency: dependency)
         return LoginRouter(interactor: interactor, viewController: viewController)
     }
 }

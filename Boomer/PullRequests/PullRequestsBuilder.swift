@@ -1,6 +1,7 @@
+import InterfaceLib
 import ModernRIBs
 
-protocol PullRequestsDependency: Dependency {
+protocol PullRequestsDependency: Dependency, HasDependencyProvider {
     
 }
 
@@ -8,21 +9,17 @@ final class PullRequestsComponent: Component<PullRequestsDependency> {
 
 }
 
-protocol PullRequestsBuildable: Buildable {
-    func build(withListener listener: PullRequestsListener) -> PullRequestsRouting
+extension PullRequestsComponent: PullRequestsInteractorParams {
+    
 }
 
 final class PullRequestsBuilder: Builder<PullRequestsDependency>, PullRequestsBuildable {
 
-    override init(dependency: PullRequestsDependency) {
-        super.init(dependency: dependency)
-    }
-
-    func build(withListener listener: PullRequestsListener) -> PullRequestsRouting {
-        let interactor = PullRequestsInteractor()
+    func build(withListener listener: PullRequestsListener) -> ViewableRouting {
+        let component = PullRequestsComponent(dependency: self.dependency)
+        let interactor = PullRequestsInteractor(params: component)
         interactor.listener = listener
         let viewController = PullRequestsViewController()
-        _ = PullRequestsComponent(dependency: dependency)
         return PullRequestsRouter(interactor: interactor, viewController: viewController)
     }
 }

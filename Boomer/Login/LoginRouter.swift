@@ -1,11 +1,12 @@
+import InterfaceLib
 import ModernRIBs
 
-protocol LoginInteractable: Interactable {
+public protocol LoginInteractable: Interactable {
     var router: LoginRouting? { get set }
     var listener: LoginListener? { get set }
 }
 
-protocol LoginViewControllable: ViewControllable {
+public protocol LoginViewControllable: ViewControllable {
 
 }
 

@@ -1,22 +1,18 @@
 import SwiftUI
 
-protocol SettingsViewDelegate: AnyObject {
+protocol SettingsViewListener: AnyObject {
     func settingsViewLogOutTapped()
 }
 
 struct SettingsView: View {
     
-    weak var delegate: SettingsViewDelegate?
-    
-    init(delegate: SettingsViewDelegate?) {
-        self.delegate = delegate
-    }
+    weak var listener: SettingsViewListener?
     
     var body: some View {
         VStack {
             Text("Settings")
             Button("LogOut") {
-                self.delegate?.settingsViewLogOutTapped()
+                self.listener?.settingsViewLogOutTapped()
             }
         }
     }
@@ -24,6 +20,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(delegate: nil)
+        SettingsView()
     }
 }

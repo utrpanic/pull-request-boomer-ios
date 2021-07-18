@@ -1,5 +1,6 @@
 import UIKit
 
+import InterfaceLib
 import ModernRIBs
 
 protocol PullRequestsViewListener: AnyObject {

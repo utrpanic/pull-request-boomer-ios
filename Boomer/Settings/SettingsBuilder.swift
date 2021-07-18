@@ -1,28 +1,27 @@
+import InterfaceLib
+import ModelLib
 import ModernRIBs
 
-protocol SettingsDependency: Dependency {
-
+public protocol SettingsDependency: Dependency, HasDependencyProvider {
+    
 }
 
 final class SettingsComponent: Component<SettingsDependency> {
-
+    
 }
 
-protocol SettingsBuildable: Buildable {
-    func build(withListener listener: SettingsListener) -> SettingsRouting
+extension SettingsComponent: SettingsInteractorParams {
+    var authService: AuthService { AuthService(api: self.apis.auth) }
 }
 
 final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {
 
-    override init(dependency: SettingsDependency) {
-        super.init(dependency: dependency)
-    }
-
-    func build(withListener listener: SettingsListener) -> SettingsRouting {
-        let interactor = SettingsInteractor()
+    func build(withListener listener: SettingsListener) -> ViewableRouting {
+        let component = SettingsComponent(dependency: self.dependency)
+        let interactor = SettingsInteractor(params: component)
         interactor.listener = listener
         let viewController = SettingsViewController()
-        _ = SettingsComponent(dependency: dependency)
+        viewController.listener = interactor
         return SettingsRouter(interactor: interactor, viewController: viewController)
     }
 }
