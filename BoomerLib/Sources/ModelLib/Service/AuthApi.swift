@@ -30,4 +30,8 @@ public final class AuthApi: AuthApiProtocol {
     public func login() {
         UIApplication.shared.open(self.loginUrl, completionHandler: nil)
     }
+    
+    public func logout() {
+        self.authToken = nil
+    }
 }

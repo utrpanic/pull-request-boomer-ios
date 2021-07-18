@@ -17,7 +17,7 @@ public final class AuthService {
     }
     
     public func logout() {
-        self.api.authToken = nil
+        self.api.logout()
     }
     
     public func handleLoginSuccess(url: URL) -> Bool {

@@ -42,6 +42,7 @@ final class MainInteractor: Interactor, MainInteractable, MainViewListener {
 extension MainInteractor: UrlHandler {
     
     func handle(_ url: URL) {
+        // TODO: Workflow<ActionableItem> 처리 필요.
         if self.authService.handleLoginSuccess(url: url) {
             self.router?.setMainTabs()
             self.router?.detachLogin()
