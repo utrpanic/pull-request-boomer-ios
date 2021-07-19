@@ -5,23 +5,10 @@ public protocol HasDependencyProvider {
     var apis: ApiProviderProtocol { get }
 }
 
-extension Component: HasDependencyProvider {
+extension Component: HasDependencyProvider where DependencyType: HasDependencyProvider {
     
-    public var buildables: BuildableProviderProtocol {
-        if let dependency = self.dependency as? HasDependencyProvider {
-            return dependency.buildables
-        } else {
-            fatalError()
-        }
-    }
-    
-    public var apis: ApiProviderProtocol {
-        if let dependency = self.dependency as? HasDependencyProvider {
-            return dependency.apis
-        } else {
-            fatalError()
-        }
-    }
+    public var buildables: BuildableProviderProtocol { self.dependency.buildables }
+    public var apis: ApiProviderProtocol { self.dependency.apis }
 }
 
 public protocol BuildableProviderProtocol {
