@@ -2,22 +2,22 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-protocol LoginDependency: Dependency, HasDependencyProvider {
-
+protocol LoginDependency: Dependency {
+    
 }
 
-final class LoginComponent: Component<LoginDependency> {
+final class LoginComponent: ComponentInThisWorld<LoginDependency> {
     
 }
 
 extension LoginComponent: LoginInteractorParams {
-    var authService: AuthService { AuthService(api: self.apis.auth) }
+    var authService: AuthService { AuthService(api: self.world.authApi) }
 }
 
-final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
+final class LoginBuilder: BuilderInThisWorld<LoginDependency>, LoginBuildable {
 
     func build(withListener listener: LoginListener) -> ViewableRouting {
-        let component = LoginComponent(dependency: self.dependency)
+        let component = LoginComponent(dependency: self.dependency, in: self.world)
         let interactor = LoginInteractor(with: component)
         interactor.listener = listener
         let viewController = LoginViewController()
