@@ -1,12 +1,11 @@
-import InterfaceLib
 import ModernRIBs
 
-public protocol HomeInteractable: Interactable {
+protocol HomeInteractable: Interactable {
     var router: HomeRouting? { get set }
     var listener: HomeListener? { get set }
 }
 
-public protocol HomeViewControllable: ViewControllable {
+protocol HomeViewControllable: ViewControllable {
     
 }
 

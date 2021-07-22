@@ -2,7 +2,7 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-public protocol SettingsDependency: Dependency {
+protocol SettingsDependency: Dependency {
     
 }
 
@@ -12,6 +12,10 @@ final class SettingsComponent: ComponentInThisWorld<SettingsDependency> {
 
 extension SettingsComponent: SettingsInteractorParams {
     var authService: AuthService { AuthService(api: self.world.authApi) }
+}
+
+protocol SettingsBuildable: Buildable {
+    func build(withListener listener: SettingsListener) -> ViewableRouting
 }
 
 final class SettingsBuilder: BuilderInThisWorld<SettingsDependency>, SettingsBuildable {

@@ -1,7 +1,10 @@
-import InterfaceLib
 import ModernRIBs
 
-public protocol HomeRouting: ViewableRouting {
+protocol HomeRouting: ViewableRouting {
+    
+}
+
+protocol HomeListener: AnyObject {
     
 }
 

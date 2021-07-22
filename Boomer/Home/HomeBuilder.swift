@@ -13,6 +13,10 @@ extension HomeComponent: HomeInteractorParams {
     
 }
 
+protocol HomeBuildable: Buildable {
+    func build(withListener listener: HomeListener) -> ViewableRouting
+}
+
 final class HomeBuilder: BuilderInThisWorld<HomeDependency>, HomeBuildable {
 
     func build(withListener listener: HomeListener) -> ViewableRouting {

@@ -32,3 +32,10 @@ open class BuilderInThisWorld<DependencyType>: Buildable {
 public protocol World {
     var authApi: AuthApiProtocol { get }
 }
+
+public protocol AuthApiProtocol: AnyObject {
+    
+    var authToken: String? { get set }
+    
+    func login()
+}

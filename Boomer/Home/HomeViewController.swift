@@ -1,6 +1,5 @@
 import UIKit
 
-import InterfaceLib
 import ModernRIBs
 
 protocol HomeViewListener: AnyObject {

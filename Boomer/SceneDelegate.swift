@@ -1,6 +1,5 @@
 import SwiftUI
 
-import InterfaceLib
 import ModelLib
 import ModernRIBs
 

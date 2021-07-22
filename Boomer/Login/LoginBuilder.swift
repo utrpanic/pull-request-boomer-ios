@@ -14,6 +14,10 @@ extension LoginComponent: LoginInteractorParams {
     var authService: AuthService { AuthService(api: self.world.authApi) }
 }
 
+protocol LoginBuildable: Buildable {
+    func build(withListener listener: LoginListener) -> ViewableRouting
+}
+
 final class LoginBuilder: BuilderInThisWorld<LoginDependency>, LoginBuildable {
 
     func build(withListener listener: LoginListener) -> ViewableRouting {

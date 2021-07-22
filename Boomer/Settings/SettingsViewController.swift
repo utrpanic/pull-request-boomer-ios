@@ -1,6 +1,5 @@
 import SwiftUI
 
-import InterfaceLib
 import ModernRIBs
 
 final class SettingsViewController: UIHostingController<SettingsView>, SettingsViewControllable {

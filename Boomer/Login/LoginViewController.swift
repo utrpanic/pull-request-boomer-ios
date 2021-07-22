@@ -1,6 +1,5 @@
 import SwiftUI
 
-import InterfaceLib
 import ModernRIBs
 
 final class LoginViewController: UIHostingController<LoginView>, LoginViewControllable {
