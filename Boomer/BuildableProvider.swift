@@ -2,13 +2,11 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-final class AppWorld: World {
-    var authApi: AuthApiProtocol = AuthApi()
-}
-
-final class BuildableProvider: BuildableProviderProtocol {
+final class BuildableProvider: BuildableProviderProtocol, MainDependency {
     
-    private var world: World
+    var world: World
+    var buildables: BuildableProviderProtocol { self }
+    var rootBuildable: MainBuildable { MainBuilder(dependency: self, in: self.world) }
     
     subscript<T>(type: T.Type, dependency dependency: Dependency) -> T {
         let buildable: Buildable
@@ -28,4 +26,8 @@ final class BuildableProvider: BuildableProviderProtocol {
     init(in world: World) {
         self.world = world
     }
+}
+
+final class AppWorld: World {
+    var authApi: AuthApiProtocol = AuthApi()
 }
