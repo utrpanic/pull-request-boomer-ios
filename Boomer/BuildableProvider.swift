@@ -13,8 +13,8 @@ final class BuildableProvider: BuildableProviderProtocol, MainDependency {
         switch dependency {
         case let dependency as LoginDependency where type.self == LoginBuildable.self:
             buildable = LoginBuilder(dependency: dependency, in: self.world)
-        case let dependency as PullRequestsDependency where type.self == PullRequestsBuildable.self:
-            buildable = PullRequestsBuilder(dependency: dependency, in: self.world)
+        case let dependency as HomeDependency where type.self == HomeBuildable.self:
+            buildable = HomeBuilder(dependency: dependency, in: self.world)
         case let dependency as SettingsDependency where type.self == SettingsBuildable.self:
             buildable = SettingsBuilder(dependency: dependency, in: self.world)
         default:

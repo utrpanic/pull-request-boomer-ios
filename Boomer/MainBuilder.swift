@@ -9,7 +9,7 @@ protocol MainDependency: Dependency {
 
 final class MainComponent: ComponentInThisWorld<MainDependency>,
                            LoginDependency,
-                           PullRequestsDependency,
+                           HomeDependency,
                            SettingsDependency {
     var buildables: BuildableProviderProtocol { self.dependency.buildables }
 }
@@ -19,8 +19,8 @@ extension MainComponent: MainRouterParams {
     var loginBuilder: LoginBuildable {
         return self.buildables[LoginBuildable.self, dependency: self]
     }
-    var pullRequestBuilder: PullRequestsBuildable {
-        return self.buildables[PullRequestsBuildable.self, dependency: self]
+    var pullRequestBuilder: HomeBuildable {
+        return self.buildables[HomeBuildable.self, dependency: self]
     }
     var settingsBuilder: SettingsBuildable {
         return self.buildables[SettingsBuildable.self, dependency: self]

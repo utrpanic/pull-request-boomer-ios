@@ -5,7 +5,7 @@ import ModernRIBs
 
 protocol MainInteractable: Interactable,
                            LoginListener,
-                           PullRequestsListener,
+                           HomeListener,
                            SettingsListener {
     var router: MainRouting? { get set }
     var listener: MainListener? { get set }
@@ -19,14 +19,14 @@ protocol MainViewControllable: ViewControllable {
 
 protocol MainRouterParams {
     var loginBuilder: LoginBuildable { get }
-    var pullRequestBuilder: PullRequestsBuildable { get }
+    var pullRequestBuilder: HomeBuildable { get }
     var settingsBuilder: SettingsBuildable { get }
 }
 
 final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, MainRouting {
     
     private let loginBuilder: LoginBuildable
-    private let pullRequestBuilder: PullRequestsBuildable
+    private let pullRequestBuilder: HomeBuildable
     private let settingsBuilder: SettingsBuildable
 
     init(interactor: MainInteractable, viewController: MainViewControllable, params: MainRouterParams) {

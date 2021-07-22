@@ -37,7 +37,7 @@ final class MainTests: XCTestCase {
             Riblet(self.router),
             Riblet(
                 MainRouter.self, [
-                    Riblet(PullRequestsRouter.self),
+                    Riblet(HomeRouter.self),
                     Riblet(SettingsRouter.self)
                 ]
             )

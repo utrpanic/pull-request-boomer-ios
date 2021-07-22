@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6016B715269F355600893FFB /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6016B714269F355600893FFB /* UIKit+Extension.swift */; };
-		601D01442694960D00DD5DBF /* PullRequestsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01402694960D00DD5DBF /* PullRequestsRouter.swift */; };
-		601D01452694960D00DD5DBF /* PullRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01412694960D00DD5DBF /* PullRequestsViewController.swift */; };
-		601D01462694960D00DD5DBF /* PullRequestsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01422694960D00DD5DBF /* PullRequestsBuilder.swift */; };
-		601D01472694960D00DD5DBF /* PullRequestsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01432694960D00DD5DBF /* PullRequestsInteractor.swift */; };
+		601D01442694960D00DD5DBF /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01402694960D00DD5DBF /* HomeRouter.swift */; };
+		601D01452694960D00DD5DBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01412694960D00DD5DBF /* HomeViewController.swift */; };
+		601D01462694960D00DD5DBF /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01422694960D00DD5DBF /* HomeBuilder.swift */; };
+		601D01472694960D00DD5DBF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01432694960D00DD5DBF /* HomeInteractor.swift */; };
 		601D014C2694963100DD5DBF /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01482694963100DD5DBF /* SettingsRouter.swift */; };
 		601D014D2694963100DD5DBF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D01492694963100DD5DBF /* SettingsViewController.swift */; };
 		601D014E2694963100DD5DBF /* SettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601D014A2694963100DD5DBF /* SettingsBuilder.swift */; };
@@ -24,14 +24,14 @@
 		6023A54826690F2F00F8C57A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54726690F2F00F8C57A /* Preview Assets.xcassets */; };
 		6023A54B26690F2F00F8C57A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */; };
 		6057FD3F26A122B600CB230A /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD3E26A122B600CB230A /* SettingsTests.swift */; };
-		6057FD4126A1235400CB230A /* PullRequestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4026A1235400CB230A /* PullRequestsTests.swift */; };
+		6057FD4126A1235400CB230A /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4026A1235400CB230A /* HomeTests.swift */; };
 		6057FD4326A1235F00CB230A /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4226A1235F00CB230A /* LoginTests.swift */; };
 		6057FD4526A1256B00CB230A /* TestCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6057FD4426A1256B00CB230A /* TestCommon.swift */; };
 		607375D526A0693900A9638F /* BuildableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607375D426A0693900A9638F /* BuildableProvider.swift */; };
 		607375D726A092E300A9638F /* InterfaceLib in Frameworks */ = {isa = PBXBuildFile; productRef = 607375D626A092E300A9638F /* InterfaceLib */; };
 		607375D926A097E000A9638F /* ModelLib in Frameworks */ = {isa = PBXBuildFile; productRef = 607375D826A097E000A9638F /* ModelLib */; };
 		608259FA266E632200FF28DE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259F9266E632200FF28DE /* SettingsView.swift */; };
-		608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259FB266E636500FF28DE /* PullRequestsView.swift */; };
+		608259FC266E636500FF28DE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608259FB266E636500FF28DE /* HomeView.swift */; };
 		60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ADF8F2266A69A200B7D861 /* LoginView.swift */; };
 		60B086B526934FD20037D370 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B126934FD20037D370 /* MainRouter.swift */; };
 		60B086B726934FD20037D370 /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B086B326934FD20037D370 /* MainBuilder.swift */; };
@@ -57,10 +57,10 @@
 
 /* Begin PBXFileReference section */
 		6016B714269F355600893FFB /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
-		601D01402694960D00DD5DBF /* PullRequestsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsRouter.swift; sourceTree = "<group>"; };
-		601D01412694960D00DD5DBF /* PullRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsViewController.swift; sourceTree = "<group>"; };
-		601D01422694960D00DD5DBF /* PullRequestsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsBuilder.swift; sourceTree = "<group>"; };
-		601D01432694960D00DD5DBF /* PullRequestsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsInteractor.swift; sourceTree = "<group>"; };
+		601D01402694960D00DD5DBF /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		601D01412694960D00DD5DBF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		601D01422694960D00DD5DBF /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
+		601D01432694960D00DD5DBF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		601D01482694963100DD5DBF /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		601D01492694963100DD5DBF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		601D014A2694963100DD5DBF /* SettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilder.swift; sourceTree = "<group>"; };
@@ -75,12 +75,12 @@
 		6023A54A26690F2F00F8C57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6023A54C26690F2F00F8C57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6057FD3E26A122B600CB230A /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
-		6057FD4026A1235400CB230A /* PullRequestsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsTests.swift; sourceTree = "<group>"; };
+		6057FD4026A1235400CB230A /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
 		6057FD4226A1235F00CB230A /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		6057FD4426A1256B00CB230A /* TestCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCommon.swift; sourceTree = "<group>"; };
 		607375D426A0693900A9638F /* BuildableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildableProvider.swift; sourceTree = "<group>"; };
 		608259F9266E632200FF28DE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		608259FB266E636500FF28DE /* PullRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsView.swift; sourceTree = "<group>"; };
+		608259FB266E636500FF28DE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		60ADF8EF266A694000B7D861 /* BoomerLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BoomerLib; sourceTree = "<group>"; };
 		60ADF8F2266A69A200B7D861 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		60B086B126934FD20037D370 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
@@ -128,16 +128,16 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		601D013F269495E200DD5DBF /* PullRequests */ = {
+		601D013F269495E200DD5DBF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				601D01402694960D00DD5DBF /* PullRequestsRouter.swift */,
-				601D01432694960D00DD5DBF /* PullRequestsInteractor.swift */,
-				601D01422694960D00DD5DBF /* PullRequestsBuilder.swift */,
-				601D01412694960D00DD5DBF /* PullRequestsViewController.swift */,
-				608259FB266E636500FF28DE /* PullRequestsView.swift */,
+				601D01402694960D00DD5DBF /* HomeRouter.swift */,
+				601D01432694960D00DD5DBF /* HomeInteractor.swift */,
+				601D01422694960D00DD5DBF /* HomeBuilder.swift */,
+				601D01412694960D00DD5DBF /* HomeViewController.swift */,
+				608259FB266E636500FF28DE /* HomeView.swift */,
 			);
-			path = PullRequests;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		601D015026949B5B00DD5DBF /* Common */ = {
@@ -174,7 +174,7 @@
 			children = (
 				601D015026949B5B00DD5DBF /* Common */,
 				60B086B926934FE50037D370 /* Login */,
-				601D013F269495E200DD5DBF /* PullRequests */,
+				601D013F269495E200DD5DBF /* Home */,
 				601D013E269495C600DD5DBF /* Settings */,
 				6023A54926690F2F00F8C57A /* LaunchScreen.storyboard */,
 				6023A53E26690F2E00F8C57A /* AppDelegate.swift */,
@@ -226,7 +226,7 @@
 				60F2906626A3421400644C58 /* DependencyProviderMock.swift */,
 				60B0F8CC26A11CF200BEB52E /* MainTests.swift */,
 				6057FD4226A1235F00CB230A /* LoginTests.swift */,
-				6057FD4026A1235400CB230A /* PullRequestsTests.swift */,
+				6057FD4026A1235400CB230A /* HomeTests.swift */,
 				6057FD3E26A122B600CB230A /* SettingsTests.swift */,
 			);
 			path = BoomerTests;
@@ -351,15 +351,15 @@
 				60B798EF2694C436004A77B6 /* LoginViewController.swift in Sources */,
 				60B086B826934FD20037D370 /* MainInteractor.swift in Sources */,
 				60B086B526934FD20037D370 /* MainRouter.swift in Sources */,
-				601D01462694960D00DD5DBF /* PullRequestsBuilder.swift in Sources */,
+				601D01462694960D00DD5DBF /* HomeBuilder.swift in Sources */,
 				601D014E2694963100DD5DBF /* SettingsBuilder.swift in Sources */,
 				60B798F02694C436004A77B6 /* LoginBuilder.swift in Sources */,
-				608259FC266E636500FF28DE /* PullRequestsView.swift in Sources */,
-				601D01472694960D00DD5DBF /* PullRequestsInteractor.swift in Sources */,
+				608259FC266E636500FF28DE /* HomeView.swift in Sources */,
+				601D01472694960D00DD5DBF /* HomeInteractor.swift in Sources */,
 				60ADF8F3266A69A200B7D861 /* LoginView.swift in Sources */,
 				60B798F12694C436004A77B6 /* LoginInteractor.swift in Sources */,
-				601D01452694960D00DD5DBF /* PullRequestsViewController.swift in Sources */,
-				601D01442694960D00DD5DBF /* PullRequestsRouter.swift in Sources */,
+				601D01452694960D00DD5DBF /* HomeViewController.swift in Sources */,
+				601D01442694960D00DD5DBF /* HomeRouter.swift in Sources */,
 				6016B715269F355600893FFB /* UIKit+Extension.swift in Sources */,
 				607375D526A0693900A9638F /* BuildableProvider.swift in Sources */,
 				601D014D2694963100DD5DBF /* SettingsViewController.swift in Sources */,
@@ -371,7 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6057FD3F26A122B600CB230A /* SettingsTests.swift in Sources */,
-				6057FD4126A1235400CB230A /* PullRequestsTests.swift in Sources */,
+				6057FD4126A1235400CB230A /* HomeTests.swift in Sources */,
 				60B0F8CD26A11CF200BEB52E /* MainTests.swift in Sources */,
 				60F2906726A3421400644C58 /* DependencyProviderMock.swift in Sources */,
 				6057FD4326A1235F00CB230A /* LoginTests.swift in Sources */,
