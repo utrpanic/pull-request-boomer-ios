@@ -1,8 +1,11 @@
-import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-public protocol SettingsRouting: ViewableRouting {
+protocol SettingsRouting: ViewableRouting {
+    
+}
+
+protocol SettingsListener: AnyObject {
     
 }
 

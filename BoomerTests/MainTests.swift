@@ -10,28 +10,14 @@ final class MainDependencyMock: DependencyMock, MainDependency {
     
 }
 
-final class MainBuilderMock: MainBuildable {
-    
-    func build() -> (LaunchRouting, UrlHandler) {
-        let component = MainComponent(dependency: MainDependencyMock())
-        let interactor = MainInteractor(params: component)
-        let viewController = MainViewController()
-        let router = MainRouter(
-            interactor: interactor,
-            viewController: viewController,
-            params: component
-        )
-        return (router, interactor)
-    }
-}
-
 final class MainTests: XCTestCase {
     
     var router: MainRouter!
     var interactor: MainInteractor!
 
     override func setUpWithError() throws {
-        let builder = MainBuilderMock()
+        let dependency = MainDependencyMock()
+        let builder = MainBuilder(dependency: dependency, in: dependency.world)
         let (router, interactor) = builder.build()
         self.router = router as? MainRouter
         self.interactor = interactor as? MainInteractor
@@ -51,7 +37,7 @@ final class MainTests: XCTestCase {
             Riblet(self.router),
             Riblet(
                 MainRouter.self, [
-                    Riblet(PullRequestsRouter.self),
+                    Riblet(HomeRouter.self),
                     Riblet(SettingsRouter.self)
                 ]
             )

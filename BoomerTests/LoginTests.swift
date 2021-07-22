@@ -14,25 +14,14 @@ final class LoginDependencyMock: DependencyMock, LoginDependency {
     
 }
 
-final class LoginBuilderMock: LoginBuildable {
-    
-    func build(withListener listener: LoginListener) -> ViewableRouting {
-        let component = LoginComponent(dependency: LoginDependencyMock())
-        let interactor = LoginInteractor(with: component)
-        interactor.listener = listener
-        let viewController = LoginViewController()
-        viewController.listener = interactor
-        return LoginRouter(interactor: interactor, viewController: viewController)
-    }
-}
-
 final class LoginTests: XCTestCase {
     
     var router: LoginRouter!
     var interactor: LoginInteractor!
 
     override func setUpWithError() throws {
-        let builder = LoginBuilderMock()
+        let dependency = LoginDependencyMock()
+        let builder = LoginBuilder(dependency: dependency, in: dependency.world)
         self.router = builder.build(withListener: LoginParentInteractorMock()) as? LoginRouter
         self.interactor = router.interactor as? LoginInteractor
     }

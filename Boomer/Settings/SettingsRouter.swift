@@ -1,12 +1,11 @@
-import InterfaceLib
 import ModernRIBs
 
-public protocol SettingsInteractable: Interactable {
+protocol SettingsInteractable: Interactable {
     var router: SettingsRouting? { get set }
     var listener: SettingsListener? { get set }
 }
 
-public protocol SettingsViewControllable: ViewControllable {
+protocol SettingsViewControllable: ViewControllable {
     
 }
 

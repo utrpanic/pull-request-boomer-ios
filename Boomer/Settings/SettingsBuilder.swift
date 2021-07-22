@@ -2,22 +2,26 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-public protocol SettingsDependency: Dependency, HasDependencyProvider {
+protocol SettingsDependency: Dependency {
     
 }
 
-final class SettingsComponent: Component<SettingsDependency> {
+final class SettingsComponent: ComponentInThisWorld<SettingsDependency> {
     
 }
 
 extension SettingsComponent: SettingsInteractorParams {
-    var authService: AuthService { AuthService(api: self.apis.auth) }
+    var authService: AuthService { AuthService(api: self.world.authApi) }
 }
 
-final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {
+protocol SettingsBuildable: Buildable {
+    func build(withListener listener: SettingsListener) -> ViewableRouting
+}
+
+final class SettingsBuilder: BuilderInThisWorld<SettingsDependency>, SettingsBuildable {
 
     func build(withListener listener: SettingsListener) -> ViewableRouting {
-        let component = SettingsComponent(dependency: self.dependency)
+        let component = SettingsComponent(dependency: self.dependency, in: self.world)
         let interactor = SettingsInteractor(params: component)
         interactor.listener = listener
         let viewController = SettingsViewController()

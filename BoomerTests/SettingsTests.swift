@@ -14,25 +14,14 @@ final class SettingsDependencyMock: DependencyMock, SettingsDependency {
 
 }
 
-final class SettingsBuilderMock: SettingsBuildable {
-    
-    func build(withListener listener: SettingsListener) -> ViewableRouting {
-        let component = SettingsComponent(dependency: SettingsDependencyMock())
-        let interactor = SettingsInteractor(params: component)
-        interactor.listener = listener
-        let viewController = SettingsViewController()
-        viewController.listener = interactor
-        return SettingsRouter(interactor: interactor, viewController: viewController)
-    }
-}
-
 final class SettingsTests: XCTestCase {
     
     var router: SettingsRouter!
     var interactor: SettingsInteractor!
 
     override func setUpWithError() throws {
-        let builder = SettingsBuilderMock()
+        let dependency = SettingsDependencyMock()
+        let builder = SettingsBuilder(dependency: dependency, in: dependency.world)
         self.router = builder.build(withListener: SettingsParentInteractorMock()) as? SettingsRouter
         self.interactor = self.router.interactor as? SettingsInteractor
     }

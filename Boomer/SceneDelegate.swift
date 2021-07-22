@@ -1,6 +1,5 @@
 import SwiftUI
 
-import InterfaceLib
 import ModelLib
 import ModernRIBs
 
@@ -24,7 +23,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func startApplication(with scene: UIScene) {
         guard let windowScene = scene as? UIWindowScene else { return }
-        let (launchRouter, urlHandler) = MainBuilder(dependency: AppComponent()).build()
+        let buildableProvider = BuildableProvider(in: AppWorld())
+        let (launchRouter, urlHandler) = buildableProvider.rootBuildable.build()
         let window = UIWindow(windowScene: windowScene)
         launchRouter.launch(from: window)
         self.launchRouter = launchRouter

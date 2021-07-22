@@ -1,15 +1,14 @@
 import UIKit
 
-import InterfaceLib
 import ModernRIBs
 
-protocol PullRequestsViewListener: AnyObject {
+protocol HomeViewListener: AnyObject {
 
 }
 
-final class PullRequestsViewController: UIViewController, PullRequestsViewControllable {
+final class HomeViewController: UIViewController, HomeViewControllable {
     
-    weak var listener: PullRequestsViewListener?
+    weak var listener: HomeViewListener?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -23,7 +22,7 @@ final class PullRequestsViewController: UIViewController, PullRequestsViewContro
     
     private func setupTabBarItem() {
         self.tabBarItem = UITabBarItem(
-            title: "PullRequests",
+            title: "Pull Requests",
             image: UIImage(systemName: "list.bullet"),
             selectedImage: nil
         )

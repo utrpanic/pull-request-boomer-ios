@@ -2,15 +2,16 @@ import InterfaceLib
 import ModelLib
 import ModernRIBs
 
-protocol MainDependency: Dependency, HasDependencyProvider {
+protocol MainDependency: Dependency {
+    var buildables: BuildableProviderProtocol { get }
     
 }
 
-final class MainComponent: Component<MainDependency>,
+final class MainComponent: ComponentInThisWorld<MainDependency>,
                            LoginDependency,
-                           PullRequestsDependency,
+                           HomeDependency,
                            SettingsDependency {
-    
+    var buildables: BuildableProviderProtocol { self.dependency.buildables }
 }
 
 extension MainComponent: MainRouterParams {
@@ -18,8 +19,8 @@ extension MainComponent: MainRouterParams {
     var loginBuilder: LoginBuildable {
         return self.buildables[LoginBuildable.self, dependency: self]
     }
-    var pullRequestBuilder: PullRequestsBuildable {
-        return self.buildables[PullRequestsBuildable.self, dependency: self]
+    var pullRequestBuilder: HomeBuildable {
+        return self.buildables[HomeBuildable.self, dependency: self]
     }
     var settingsBuilder: SettingsBuildable {
         return self.buildables[SettingsBuildable.self, dependency: self]
@@ -27,17 +28,17 @@ extension MainComponent: MainRouterParams {
 }
 
 extension MainComponent: MainInteracterParams {
-    var authService: AuthService { AuthService(api: self.apis.auth) }
+    var authService: AuthService { AuthService(api: self.world.authApi) }
 }
 
 protocol MainBuildable: Buildable {
     func build() -> (LaunchRouting, UrlHandler)
 }
 
-final class MainBuilder: Builder<MainDependency>, MainBuildable {
-
+final class MainBuilder: BuilderInThisWorld<MainDependency>, MainBuildable {
+    
     func build() -> (LaunchRouting, UrlHandler) {
-        let component = MainComponent(dependency: self.dependency)
+        let component = MainComponent(dependency: self.dependency, in: self.world)
         let interactor = MainInteractor(params: component)
         let viewController = MainViewController()
         let router = MainRouter(
