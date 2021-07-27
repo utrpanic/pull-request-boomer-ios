@@ -30,10 +30,10 @@ open class BuilderInThisWorld<DependencyType>: Buildable {
 }
 
 public protocol World {
-    var authApi: AuthApiProtocol { get }
+    var gitHubApi: GitHubApiProtocol { get }
 }
 
-public protocol AuthApiProtocol: AnyObject {
+public protocol GitHubApiProtocol: AnyObject {
     
     var authToken: String? { get set }
     

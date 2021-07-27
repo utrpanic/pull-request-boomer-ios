@@ -5,7 +5,7 @@ import InterfaceLib
 @testable import Boomer
 
 final class TestWorld: World {
-    var authApi: AuthApiProtocol = AuthApiMock()
+    var gitHubApi: GitHubApiProtocol = GitHubApiMock()
 }
 
 open class DependencyMock {
@@ -13,7 +13,7 @@ open class DependencyMock {
     lazy var buildables: BuildableProviderProtocol = BuildableProvider(in: self.world)
 }
 
-final class AuthApiMock: AuthApiProtocol {
+final class GitHubApiMock: GitHubApiProtocol {
     
     var authToken: String? = nil
     

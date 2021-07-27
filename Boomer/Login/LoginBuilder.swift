@@ -11,7 +11,7 @@ final class LoginComponent: ComponentInThisWorld<LoginDependency> {
 }
 
 extension LoginComponent: LoginInteractorParams {
-    var authService: AuthService { AuthService(api: self.world.authApi) }
+    var gitHubService: GitHubService { GitHubService(api: self.world.gitHubApi) }
 }
 
 protocol LoginBuildable: Buildable {

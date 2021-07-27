@@ -11,7 +11,7 @@ final class SettingsComponent: ComponentInThisWorld<SettingsDependency> {
 }
 
 extension SettingsComponent: SettingsInteractorParams {
-    var authService: AuthService { AuthService(api: self.world.authApi) }
+    var gitHubService: GitHubService { GitHubService(api: self.world.gitHubApi) }
 }
 
 protocol SettingsBuildable: Buildable {

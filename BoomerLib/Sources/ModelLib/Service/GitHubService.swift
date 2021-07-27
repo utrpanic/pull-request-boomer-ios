@@ -1,14 +1,14 @@
-import UIKit
+import Foundation
 
 import InterfaceLib
 
-public final class AuthService {
+public final class GitHubService {
     
-    let api: AuthApiProtocol
+    let api: GitHubApiProtocol
     
     public var samIsLoggedIn: Bool { self.api.authToken != nil }
     
-    public init(api: AuthApiProtocol) {
+    public init(api: GitHubApiProtocol) {
         self.api = api
     }
     

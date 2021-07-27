@@ -10,7 +10,7 @@ protocol SettingsListener: AnyObject {
 }
 
 protocol SettingsInteractorParams {
-    var authService: AuthService { get }
+    var gitHubService: GitHubService { get }
 }
 
 final class SettingsInteractor: Interactor, SettingsInteractable, SettingsViewListener {
@@ -18,15 +18,15 @@ final class SettingsInteractor: Interactor, SettingsInteractable, SettingsViewLi
     weak var router: SettingsRouting?
     weak var listener: SettingsListener?
     
-    var authService: AuthService
+    var gitHubService: GitHubService
     
     init(params: SettingsInteractorParams) {
-        self.authService = params.authService
+        self.gitHubService = params.gitHubService
     }
     
     // MARK: - SettingsViewListener
     
     func settingsViewLogOutTapped() {
-        self.authService.logout()
+        self.gitHubService.logout()
     }
 }

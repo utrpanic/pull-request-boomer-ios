@@ -10,7 +10,7 @@ protocol LoginListener: AnyObject {
 }
 
 protocol LoginInteractorParams {
-    var authService: AuthService { get }
+    var gitHubService: GitHubService { get }
 }
 
 final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
@@ -18,15 +18,15 @@ final class LoginInteractor: Interactor, LoginInteractable, LoginViewListener {
     weak var router: LoginRouting?
     weak var listener: LoginListener?
     
-    let service: AuthService
+    let gitHubService: GitHubService
     
     init(with params: LoginInteractorParams) {
-        self.service = params.authService
+        self.gitHubService = params.gitHubService
     }
     
     // MARK: - LoginViewListener
     
     func loginViewLoginTapped() {
-        self.service.login()
+        self.gitHubService.login()
     }
 }

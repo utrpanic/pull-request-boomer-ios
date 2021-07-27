@@ -29,5 +29,5 @@ final class BuildableProvider: BuildableProviderProtocol, MainDependency {
 }
 
 final class AppWorld: World {
-    var authApi: AuthApiProtocol = AuthApi()
+    var gitHubApi: GitHubApiProtocol = GitHubApi()
 }

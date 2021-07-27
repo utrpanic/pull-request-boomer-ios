@@ -29,7 +29,7 @@ final class MainTests: XCTestCase {
 
     func testLaunchLoggedIn() throws {
         // Arrange
-        self.interactor.authService.api.authToken = "SomeToken"
+        self.interactor.gitHubService.api.authToken = "SomeToken"
         // Act
         self.router.launch(from: UIWindow())
         // Assert
@@ -46,7 +46,7 @@ final class MainTests: XCTestCase {
     
     func testLaunchLoggedOut() throws {
         // Arrange
-        self.interactor.authService.api.authToken = nil
+        self.interactor.gitHubService.api.authToken = nil
         // Act
         self.router.launch(from: UIWindow())
         // Assert

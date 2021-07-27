@@ -28,7 +28,7 @@ extension MainComponent: MainRouterParams {
 }
 
 extension MainComponent: MainInteracterParams {
-    var authService: AuthService { AuthService(api: self.world.authApi) }
+    var gitHubService: GitHubService { GitHubService(api: self.world.gitHubApi) }
 }
 
 protocol MainBuildable: Buildable {

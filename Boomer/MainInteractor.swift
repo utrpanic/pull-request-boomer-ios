@@ -15,7 +15,7 @@ protocol MainListener: AnyObject {
 }
 
 protocol MainInteracterParams {
-    var authService: AuthService { get }
+    var gitHubService: GitHubService { get }
 }
 
 final class MainInteractor: Interactor, MainInteractable, MainViewListener {
@@ -23,15 +23,15 @@ final class MainInteractor: Interactor, MainInteractable, MainViewListener {
     weak var router: MainRouting?
     weak var listener: MainListener?
     
-    var authService: AuthService
+    var gitHubService: GitHubService
     
     init(params: MainInteracterParams) {
-        self.authService = params.authService
+        self.gitHubService = params.gitHubService
     }
     
     override func didBecomeActive() {
         super.didBecomeActive()
-        if self.authService.samIsLoggedIn {
+        if self.gitHubService.samIsLoggedIn {
             self.router?.setMainTabs()
         } else {
             self.router?.attachLogin()
@@ -42,7 +42,7 @@ final class MainInteractor: Interactor, MainInteractable, MainViewListener {
 extension MainInteractor: UrlHandler {
     
     func handle(_ url: URL) {
-        if self.authService.handleLoginSuccess(url: url) {
+        if self.gitHubService.handleLoginSuccess(url: url) {
             self.router?.setMainTabs()
             self.router?.detachLogin()
         }
