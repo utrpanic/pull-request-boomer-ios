@@ -6,7 +6,7 @@ protocol SettingsDependency: Dependency {
     
 }
 
-final class SettingsComponent: Component<SettingsDependency> {
+private final class SettingsComponent: Component<SettingsDependency> {
     
 }
 
@@ -16,7 +16,7 @@ protocol SettingsBuildable: Buildable {
 
 final class SettingsBuilder: BuilderWithTargetDependency<SettingsDependency>, SettingsBuildable {
     
-    var interactorParams: SettingsInteractor.Params {
+    private var interactorParams: SettingsInteractor.Params {
         SettingsInteractor.Params(
             gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
         )

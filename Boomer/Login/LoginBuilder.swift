@@ -6,7 +6,7 @@ protocol LoginDependency: Dependency {
     
 }
 
-final class LoginComponent: Component<LoginDependency> {
+private final class LoginComponent: Component<LoginDependency> {
     
 }
 
@@ -16,7 +16,7 @@ protocol LoginBuildable: Buildable {
 
 final class LoginBuilder: BuilderWithTargetDependency<LoginDependency>, LoginBuildable {
     
-    var interactorParams: LoginInteractor.Params {
+    private var interactorParams: LoginInteractor.Params {
         return LoginInteractor.Params(
             gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
         )

@@ -5,7 +5,7 @@ protocol HomeDependency: Dependency {
     
 }
 
-final class HomeComponent: Component<HomeDependency> {
+private final class HomeComponent: Component<HomeDependency> {
 
 }
 
@@ -15,7 +15,7 @@ protocol HomeBuildable: Buildable {
 
 final class HomeBuilder: BuilderWithTargetDependency<HomeDependency>, HomeBuildable {
     
-    var interactorParams: HomeInteractor.Params {
+    private var interactorParams: HomeInteractor.Params {
         return HomeInteractor.Params()
     }
 

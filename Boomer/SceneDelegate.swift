@@ -23,7 +23,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func startApplication(with scene: UIScene) {
         guard let windowScene = scene as? UIWindowScene else { return }
-        let (launchRouter, urlHandler) = MainBuilder(with: AppDependency()).build()
+        let (launchRouter, urlHandler) = MainBuilder().build()
         let window = UIWindow(windowScene: windowScene)
         launchRouter.launch(from: window)
         self.launchRouter = launchRouter

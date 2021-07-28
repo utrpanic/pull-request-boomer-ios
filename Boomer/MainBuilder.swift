@@ -2,18 +2,22 @@ import CommonLib
 import ModelLib
 import ModernRIBs
 
-private class AppComponent: EmptyComponent, MainDependency {
+private final class AppComponent: EmptyComponent, MainDependency {
     
+}
+
+private final class AppDependency: TargetDependency {
+    var gitHubApi: GitHubApiProtocol = GitHubApi()
 }
 
 protocol MainDependency: Dependency {
     
 }
 
-final class MainComponent: Component<MainDependency>,
-                           LoginDependency,
-                           HomeDependency,
-                           SettingsDependency {
+private final class MainComponent: Component<MainDependency>,
+                                   LoginDependency,
+                                   HomeDependency,
+                                   SettingsDependency {
     
 }
 
@@ -23,9 +27,9 @@ protocol MainBuildable: Buildable {
 
 final class MainBuilder: BuilderWithTargetDependency<MainDependency>, MainBuildable {
     
-    lazy var component: MainComponent = MainComponent(dependency: self.dependency)
+    lazy private var component: MainComponent = MainComponent(dependency: self.dependency)
     
-    var routerParams: MainRouter.Params {
+    private var routerParams: MainRouter.Params {
         return MainRouter.Params(
             loginBuilder: LoginBuilder(dependency: self.component, with: self.targetDependency),
             homeBuilder: HomeBuilder(dependency: self.component, with: self.targetDependency),
@@ -33,14 +37,14 @@ final class MainBuilder: BuilderWithTargetDependency<MainDependency>, MainBuilda
         )
     }
     
-    var interactorParams: MainInteractor.Params {
+    private var interactorParams: MainInteractor.Params {
         return MainInteractor.Params(
             gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
         )
     }
     
-    init(with targetDependency: TargetDependency) {
-        super.init(dependency: AppComponent(), with: targetDependency)
+    init() {
+        super.init(dependency: AppComponent(), with: AppDependency())
     }
     
     func build() -> (LaunchRouting, UrlHandler) {
