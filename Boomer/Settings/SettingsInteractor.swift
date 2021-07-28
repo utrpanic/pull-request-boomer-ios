@@ -9,18 +9,18 @@ protocol SettingsListener: AnyObject {
     
 }
 
-protocol SettingsInteractorParams {
-    var gitHubService: GitHubService { get }
-}
-
 final class SettingsInteractor: Interactor, SettingsInteractable, SettingsViewListener {
     
     weak var router: SettingsRouting?
     weak var listener: SettingsListener?
     
+    struct Params {
+        var gitHubService: GitHubService
+    }
+    
     var gitHubService: GitHubService
     
-    init(params: SettingsInteractorParams) {
+    init(params: Params) {
         self.gitHubService = params.gitHubService
     }
     

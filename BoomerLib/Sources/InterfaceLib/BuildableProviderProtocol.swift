@@ -4,28 +4,17 @@ public protocol BuildableProviderProtocol {
     
     subscript<T>(type: T.Type, dependency dependency: Dependency) -> T { get }
     
-    init(in world: World)
+    init(in theWorld: World)
 }
 
-open class ComponentInThisWorld<DependencyType> {
+open class BuilderInTheWorld<DependencyType>: Buildable {
     
     public let dependency: DependencyType
-    public let world: World
+    public let theWorld: World
 
-    public init(dependency: DependencyType, in world: World) {
+    public init(dependency: DependencyType, in theWorld: World) {
         self.dependency = dependency
-        self.world = world
-    }
-}
-
-open class BuilderInThisWorld<DependencyType>: Buildable {
-    
-    public let dependency: DependencyType
-    public let world: World
-
-    public init(dependency: DependencyType, in world: World) {
-        self.dependency = dependency
-        self.world = world
+        self.theWorld = theWorld
     }
 }
 

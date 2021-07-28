@@ -6,23 +6,25 @@ protocol SettingsDependency: Dependency {
     
 }
 
-final class SettingsComponent: ComponentInThisWorld<SettingsDependency> {
+final class SettingsComponent: Component<SettingsDependency> {
     
-}
-
-extension SettingsComponent: SettingsInteractorParams {
-    var gitHubService: GitHubService { GitHubService(api: self.world.gitHubApi) }
 }
 
 protocol SettingsBuildable: Buildable {
     func build(withListener listener: SettingsListener) -> ViewableRouting
 }
 
-final class SettingsBuilder: BuilderInThisWorld<SettingsDependency>, SettingsBuildable {
+final class SettingsBuilder: BuilderInTheWorld<SettingsDependency>, SettingsBuildable {
+    
+    var interactorParams: SettingsInteractor.Params {
+        SettingsInteractor.Params(
+            gitHubService: GitHubService(api: self.theWorld.gitHubApi)
+        )
+    }
 
     func build(withListener listener: SettingsListener) -> ViewableRouting {
-        let component = SettingsComponent(dependency: self.dependency, in: self.world)
-        let interactor = SettingsInteractor(params: component)
+        _ = SettingsComponent(dependency: self.dependency)
+        let interactor = SettingsInteractor(params: self.interactorParams)
         interactor.listener = listener
         let viewController = SettingsViewController()
         viewController.listener = interactor

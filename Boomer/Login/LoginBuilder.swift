@@ -6,23 +6,25 @@ protocol LoginDependency: Dependency {
     
 }
 
-final class LoginComponent: ComponentInThisWorld<LoginDependency> {
+final class LoginComponent: Component<LoginDependency> {
     
-}
-
-extension LoginComponent: LoginInteractorParams {
-    var gitHubService: GitHubService { GitHubService(api: self.world.gitHubApi) }
 }
 
 protocol LoginBuildable: Buildable {
     func build(withListener listener: LoginListener) -> ViewableRouting
 }
 
-final class LoginBuilder: BuilderInThisWorld<LoginDependency>, LoginBuildable {
+final class LoginBuilder: BuilderInTheWorld<LoginDependency>, LoginBuildable {
+    
+    var interactorParams: LoginInteractor.Params {
+        return LoginInteractor.Params(
+            gitHubService: GitHubService(api: self.theWorld.gitHubApi)
+        )
+    }
 
     func build(withListener listener: LoginListener) -> ViewableRouting {
-        let component = LoginComponent(dependency: self.dependency, in: self.world)
-        let interactor = LoginInteractor(with: component)
+        _ = LoginComponent(dependency: self.dependency)
+        let interactor = LoginInteractor(with: self.interactorParams)
         interactor.listener = listener
         let viewController = LoginViewController()
         viewController.listener = interactor

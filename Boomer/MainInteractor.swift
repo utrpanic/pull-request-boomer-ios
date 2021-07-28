@@ -14,18 +14,18 @@ protocol MainListener: AnyObject {
     
 }
 
-protocol MainInteracterParams {
-    var gitHubService: GitHubService { get }
-}
-
 final class MainInteractor: Interactor, MainInteractable, MainViewListener {
     
     weak var router: MainRouting?
     weak var listener: MainListener?
     
+    struct Params {
+        var gitHubService: GitHubService
+    }
+
     var gitHubService: GitHubService
     
-    init(params: MainInteracterParams) {
+    init(params: Params) {
         self.gitHubService = params.gitHubService
     }
     

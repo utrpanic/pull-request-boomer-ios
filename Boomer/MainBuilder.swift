@@ -7,44 +7,42 @@ protocol MainDependency: Dependency {
     
 }
 
-final class MainComponent: ComponentInThisWorld<MainDependency>,
+final class MainComponent: Component<MainDependency>,
                            LoginDependency,
                            HomeDependency,
                            SettingsDependency {
     var buildables: BuildableProviderProtocol { self.dependency.buildables }
 }
 
-extension MainComponent: MainRouterParams {
-    
-    var loginBuilder: LoginBuildable {
-        return self.buildables[LoginBuildable.self, dependency: self]
-    }
-    var pullRequestBuilder: HomeBuildable {
-        return self.buildables[HomeBuildable.self, dependency: self]
-    }
-    var settingsBuilder: SettingsBuildable {
-        return self.buildables[SettingsBuildable.self, dependency: self]
-    }
-}
-
-extension MainComponent: MainInteracterParams {
-    var gitHubService: GitHubService { GitHubService(api: self.world.gitHubApi) }
-}
-
 protocol MainBuildable: Buildable {
     func build() -> (LaunchRouting, UrlHandler)
 }
 
-final class MainBuilder: BuilderInThisWorld<MainDependency>, MainBuildable {
+final class MainBuilder: BuilderInTheWorld<MainDependency>, MainBuildable {
+    
+    lazy var component: MainComponent = MainComponent(dependency: self.dependency)
+    
+    var routerParams: MainRouter.Params {
+        return MainRouter.Params(
+            loginBuilder: self.dependency.buildables[LoginBuildable.self, dependency: self.component],
+            homeBuilder: self.dependency.buildables[HomeBuildable.self, dependency: self.component],
+            settingsBuilder: self.dependency.buildables[SettingsBuildable.self, dependency: self.component]
+        )
+    }
+    
+    var interactorParams: MainInteractor.Params {
+        return MainInteractor.Params(
+            gitHubService: GitHubService(api: self.theWorld.gitHubApi)
+        )
+    }
     
     func build() -> (LaunchRouting, UrlHandler) {
-        let component = MainComponent(dependency: self.dependency, in: self.world)
-        let interactor = MainInteractor(params: component)
+        let interactor = MainInteractor(params: self.interactorParams)
         let viewController = MainViewController()
         let router = MainRouter(
             interactor: interactor,
             viewController: viewController,
-            params: component
+            params: self.routerParams
         )
         return (router, interactor)
     }

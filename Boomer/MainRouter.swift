@@ -17,21 +17,21 @@ protocol MainViewControllable: ViewControllable {
     func setTabs(_ tabs: [ViewControllable])
 }
 
-protocol MainRouterParams {
-    var loginBuilder: LoginBuildable { get }
-    var pullRequestBuilder: HomeBuildable { get }
-    var settingsBuilder: SettingsBuildable { get }
-}
-
 final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, MainRouting {
     
+    struct Params {
+        var loginBuilder: LoginBuildable
+        var homeBuilder: HomeBuildable
+        var settingsBuilder: SettingsBuildable
+    }
+    
     private let loginBuilder: LoginBuildable
-    private let pullRequestBuilder: HomeBuildable
+    private let homeBuilder: HomeBuildable
     private let settingsBuilder: SettingsBuildable
-
-    init(interactor: MainInteractable, viewController: MainViewControllable, params: MainRouterParams) {
+    
+    init(interactor: MainInteractable, viewController: MainViewControllable, params: Params) {
         self.loginBuilder = params.loginBuilder
-        self.pullRequestBuilder = params.pullRequestBuilder
+        self.homeBuilder = params.homeBuilder
         self.settingsBuilder = params.settingsBuilder
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
@@ -57,7 +57,7 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
     }
     
     func setMainTabs() {
-        let pullRequest = self.pullRequestBuilder.build(withListener: self.interactor)
+        let pullRequest = self.homeBuilder.build(withListener: self.interactor)
         self.attachChild(pullRequest)
         let settings = self.settingsBuilder.build(withListener: self.interactor)
         self.attachChild(settings)
