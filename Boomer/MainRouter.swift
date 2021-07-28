@@ -1,6 +1,6 @@
 import UIKit
 
-import InterfaceLib
+import CommonLib
 import ModernRIBs
 
 protocol MainInteractable: Interactable,

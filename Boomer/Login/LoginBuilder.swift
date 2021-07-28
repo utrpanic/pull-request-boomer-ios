@@ -1,4 +1,4 @@
-import InterfaceLib
+import CommonLib
 import ModelLib
 import ModernRIBs
 
@@ -14,11 +14,11 @@ protocol LoginBuildable: Buildable {
     func build(withListener listener: LoginListener) -> ViewableRouting
 }
 
-final class LoginBuilder: BuilderInTheWorld<LoginDependency>, LoginBuildable {
+final class LoginBuilder: BuilderWithTargetDependency<LoginDependency>, LoginBuildable {
     
     var interactorParams: LoginInteractor.Params {
         return LoginInteractor.Params(
-            gitHubService: GitHubService(api: self.theWorld.gitHubApi)
+            gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
         )
     }
 

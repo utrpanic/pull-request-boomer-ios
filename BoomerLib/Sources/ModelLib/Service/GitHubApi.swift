@@ -1,6 +1,6 @@
 import UIKit
 
-import InterfaceLib
+import CommonLib
 
 public final class GitHubApi: GitHubApiProtocol {
     

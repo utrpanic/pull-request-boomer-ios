@@ -1,4 +1,4 @@
-import InterfaceLib
+import CommonLib
 import ModelLib
 import ModernRIBs
 
@@ -14,11 +14,11 @@ protocol SettingsBuildable: Buildable {
     func build(withListener listener: SettingsListener) -> ViewableRouting
 }
 
-final class SettingsBuilder: BuilderInTheWorld<SettingsDependency>, SettingsBuildable {
+final class SettingsBuilder: BuilderWithTargetDependency<SettingsDependency>, SettingsBuildable {
     
     var interactorParams: SettingsInteractor.Params {
         SettingsInteractor.Params(
-            gitHubService: GitHubService(api: self.theWorld.gitHubApi)
+            gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
         )
     }
 

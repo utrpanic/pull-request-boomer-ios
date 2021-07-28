@@ -1,6 +1,6 @@
 import Foundation
 
-import InterfaceLib
+import CommonLib
 
 public final class GitHubService {
     

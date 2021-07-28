@@ -1,9 +1,12 @@
-import InterfaceLib
+import CommonLib
 import ModelLib
 import ModernRIBs
 
+private class AppComponent: EmptyComponent, MainDependency {
+    
+}
+
 protocol MainDependency: Dependency {
-    var buildables: BuildableProviderProtocol { get }
     
 }
 
@@ -11,29 +14,33 @@ final class MainComponent: Component<MainDependency>,
                            LoginDependency,
                            HomeDependency,
                            SettingsDependency {
-    var buildables: BuildableProviderProtocol { self.dependency.buildables }
+    
 }
 
 protocol MainBuildable: Buildable {
     func build() -> (LaunchRouting, UrlHandler)
 }
 
-final class MainBuilder: BuilderInTheWorld<MainDependency>, MainBuildable {
+final class MainBuilder: BuilderWithTargetDependency<MainDependency>, MainBuildable {
     
     lazy var component: MainComponent = MainComponent(dependency: self.dependency)
     
     var routerParams: MainRouter.Params {
         return MainRouter.Params(
-            loginBuilder: self.dependency.buildables[LoginBuildable.self, dependency: self.component],
-            homeBuilder: self.dependency.buildables[HomeBuildable.self, dependency: self.component],
-            settingsBuilder: self.dependency.buildables[SettingsBuildable.self, dependency: self.component]
+            loginBuilder: LoginBuilder(dependency: self.component, with: self.targetDependency),
+            homeBuilder: HomeBuilder(dependency: self.component, with: self.targetDependency),
+            settingsBuilder: SettingsBuilder(dependency: self.component, with: self.targetDependency)
         )
     }
     
     var interactorParams: MainInteractor.Params {
         return MainInteractor.Params(
-            gitHubService: GitHubService(api: self.theWorld.gitHubApi)
+            gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
         )
+    }
+    
+    init(with targetDependency: TargetDependency) {
+        super.init(dependency: AppComponent(), with: targetDependency)
     }
     
     func build() -> (LaunchRouting, UrlHandler) {

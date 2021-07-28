@@ -1,4 +1,4 @@
-import InterfaceLib
+import CommonLib
 import ModernRIBs
 
 protocol HomeDependency: Dependency {
@@ -13,7 +13,7 @@ protocol HomeBuildable: Buildable {
     func build(withListener listener: HomeListener) -> ViewableRouting
 }
 
-final class HomeBuilder: BuilderInTheWorld<HomeDependency>, HomeBuildable {
+final class HomeBuilder: BuilderWithTargetDependency<HomeDependency>, HomeBuildable {
     
     var interactorParams: HomeInteractor.Params {
         return HomeInteractor.Params()
