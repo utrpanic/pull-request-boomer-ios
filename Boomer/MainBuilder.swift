@@ -1,44 +1,46 @@
-import InterfaceLib
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
+private class AppComponent: EmptyComponent, MainDependency {
+    let common: CommonDependency = CommonDependency(
+        gitHubApi: GitHubApi()
+    )
+}
+
 protocol MainDependency: Dependency {
-    var buildables: BuildableProviderProtocol { get }
+    var common: CommonDependency { get }
+}
+
+private final class MainComponent: Component<MainDependency>,
+                                   LoginDependency,
+                                   HomeDependency,
+                                   SettingsDependency {
+    var common: CommonDependency { self.dependency.common }
+}
+
+extension MainComponent: MainInteractorParams, MainRouterParams {
     
-}
-
-final class MainComponent: ComponentInThisWorld<MainDependency>,
-                           LoginDependency,
-                           HomeDependency,
-                           SettingsDependency {
-    var buildables: BuildableProviderProtocol { self.dependency.buildables }
-}
-
-extension MainComponent: MainRouterParams {
+    var gitHubService: GitHubService {
+        return GitHubService(api: self.dependency.common.gitHubApi)
+    }
     
-    var loginBuilder: LoginBuildable {
-        return self.buildables[LoginBuildable.self, dependency: self]
-    }
-    var pullRequestBuilder: HomeBuildable {
-        return self.buildables[HomeBuildable.self, dependency: self]
-    }
-    var settingsBuilder: SettingsBuildable {
-        return self.buildables[SettingsBuildable.self, dependency: self]
-    }
-}
-
-extension MainComponent: MainInteracterParams {
-    var authService: AuthService { AuthService(api: self.world.authApi) }
+    var loginBuilder: LoginBuildable { LoginBuilder(dependency: self) }
+    var homeBuilder: HomeBuildable { HomeBuilder(dependency: self) }
+    var settingsBuilder: SettingsBuildable { SettingsBuilder(dependency: self) }
 }
 
 protocol MainBuildable: Buildable {
     func build() -> (LaunchRouting, UrlHandler)
 }
 
-final class MainBuilder: BuilderInThisWorld<MainDependency>, MainBuildable {
+final class MainBuilder: Builder<MainDependency>, MainBuildable {
+    
+    convenience init() {
+        self.init(dependency: AppComponent())
+    }
     
     func build() -> (LaunchRouting, UrlHandler) {
-        let component = MainComponent(dependency: self.dependency, in: self.world)
+        let component = MainComponent(dependency: self.dependency)
         let interactor = MainInteractor(params: component)
         let viewController = MainViewController()
         let router = MainRouter(

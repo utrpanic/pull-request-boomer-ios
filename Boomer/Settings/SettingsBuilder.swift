@@ -1,27 +1,28 @@
-import InterfaceLib
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
 protocol SettingsDependency: Dependency {
-    
+    var common: CommonDependency { get }
 }
 
-final class SettingsComponent: ComponentInThisWorld<SettingsDependency> {
+private final class SettingsComponent: Component<SettingsDependency> {
     
 }
 
 extension SettingsComponent: SettingsInteractorParams {
-    var authService: AuthService { AuthService(api: self.world.authApi) }
+    var gitHubService: GitHubService {
+        return GitHubService(api: self.dependency.common.gitHubApi)
+    }
 }
 
 protocol SettingsBuildable: Buildable {
     func build(withListener listener: SettingsListener) -> ViewableRouting
 }
 
-final class SettingsBuilder: BuilderInThisWorld<SettingsDependency>, SettingsBuildable {
+final class SettingsBuilder: Builder<SettingsDependency>, SettingsBuildable {
 
     func build(withListener listener: SettingsListener) -> ViewableRouting {
-        let component = SettingsComponent(dependency: self.dependency, in: self.world)
+        let component = SettingsComponent(dependency: self.dependency)
         let interactor = SettingsInteractor(params: component)
         interactor.listener = listener
         let viewController = SettingsViewController()

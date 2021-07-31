@@ -1,8 +1,12 @@
 import UIKit
 
-import InterfaceLib
+public protocol GitHubApiProtocol {
+    var authToken: String? { get set }
+    var loggedIn: () -> Bool { get set }
+    var login: () -> Void { get set }
+}
 
-public final class AuthApi: AuthApiProtocol {
+public final class GitHubApi: GitHubApiProtocol {
     
     private let clientId: String = "a01b32cedbcdd0a87450"
     private let clientSecret: String = "0d43065448d388f091f963456e1ba151ee580673"
@@ -27,7 +31,11 @@ public final class AuthApi: AuthApiProtocol {
         // do nothing.
     }
     
-    public func login() {
+    public lazy var loggedIn: () -> Bool = {
+        return self.authToken != nil
+    }
+    
+    public lazy var login: () -> Void = {
         UIApplication.shared.open(self.loginUrl, completionHandler: nil)
     }
 }

@@ -1,27 +1,28 @@
-import InterfaceLib
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
 protocol LoginDependency: Dependency {
-    
+    var common: CommonDependency { get }
 }
 
-final class LoginComponent: ComponentInThisWorld<LoginDependency> {
+private final class LoginComponent: Component<LoginDependency> {
     
 }
 
 extension LoginComponent: LoginInteractorParams {
-    var authService: AuthService { AuthService(api: self.world.authApi) }
+    var gitHubService: GitHubService {
+        return GitHubService(api: self.dependency.common.gitHubApi)
+    }
 }
 
 protocol LoginBuildable: Buildable {
     func build(withListener listener: LoginListener) -> ViewableRouting
 }
 
-final class LoginBuilder: BuilderInThisWorld<LoginDependency>, LoginBuildable {
+final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
 
     func build(withListener listener: LoginListener) -> ViewableRouting {
-        let component = LoginComponent(dependency: self.dependency, in: self.world)
+        let component = LoginComponent(dependency: self.dependency)
         let interactor = LoginInteractor(with: component)
         interactor.listener = listener
         let viewController = LoginViewController()

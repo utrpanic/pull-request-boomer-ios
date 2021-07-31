@@ -1,10 +1,9 @@
 import XCTest
 
+import BoomerLib
 import ModernRIBs
-import InterfaceLib
 
 @testable import Boomer
-@testable import ModelLib
 
 final class MainDependencyMock: DependencyMock, MainDependency {
     
@@ -12,13 +11,15 @@ final class MainDependencyMock: DependencyMock, MainDependency {
 
 final class MainTests: XCTestCase {
     
+    var common: CommonDependency!
     var router: MainRouter!
     var interactor: MainInteractor!
 
     override func setUpWithError() throws {
         let dependency = MainDependencyMock()
-        let builder = MainBuilder(dependency: dependency, in: dependency.world)
+        let builder = MainBuilder(dependency: dependency)
         let (router, interactor) = builder.build()
+        self.common = dependency.common
         self.router = router as? MainRouter
         self.interactor = interactor as? MainInteractor
     }
@@ -29,7 +30,7 @@ final class MainTests: XCTestCase {
 
     func testLaunchLoggedIn() throws {
         // Arrange
-        self.interactor.authService.api.authToken = "SomeToken"
+        self.common.gitHubApi.loggedIn = { true }
         // Act
         self.router.launch(from: UIWindow())
         // Assert
@@ -46,7 +47,7 @@ final class MainTests: XCTestCase {
     
     func testLaunchLoggedOut() throws {
         // Arrange
-        self.interactor.authService.api.authToken = nil
+        self.common.gitHubApi.loggedIn = { false }
         // Act
         self.router.launch(from: UIWindow())
         // Assert

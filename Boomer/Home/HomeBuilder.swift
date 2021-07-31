@@ -1,29 +1,29 @@
-import InterfaceLib
 import ModernRIBs
 
 protocol HomeDependency: Dependency {
     
 }
 
-final class HomeComponent: ComponentInThisWorld<HomeDependency> {
+private final class HomeComponent: Component<HomeDependency> {
 
-}
-
-extension HomeComponent: HomeInteractorParams {
-    
 }
 
 protocol HomeBuildable: Buildable {
     func build(withListener listener: HomeListener) -> ViewableRouting
 }
 
-final class HomeBuilder: BuilderInThisWorld<HomeDependency>, HomeBuildable {
+final class HomeBuilder: Builder<HomeDependency>, HomeBuildable {
+    
+    private var interactorParams: HomeInteractor.Params {
+        return HomeInteractor.Params()
+    }
 
     func build(withListener listener: HomeListener) -> ViewableRouting {
-        let component = HomeComponent(dependency: self.dependency, in: self.world)
-        let interactor = HomeInteractor(params: component)
+        _ = HomeComponent(dependency: self.dependency)
+        let interactor = HomeInteractor(params: self.interactorParams)
         interactor.listener = listener
         let viewController = HomeViewController()
+        viewController.listener = interactor
         return HomeRouter(interactor: interactor, viewController: viewController)
     }
 }

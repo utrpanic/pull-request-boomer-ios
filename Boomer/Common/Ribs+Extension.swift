@@ -3,12 +3,12 @@ import UIKit
 import ModernRIBs
 
 final class NavigationControllable: ViewControllable {
-
-    var uiviewController: UIViewController
-    var uinavigationController: UINavigationController { self.uiviewController as! UINavigationController }
+    
+    var uiviewController: UIViewController { self.uinavigationController }
+    var uinavigationController: UINavigationController
 
     init(root: ViewControllable) {
-        self.uiviewController = UINavigationController(rootViewController: root.uiviewController)
+        self.uinavigationController = UINavigationController(rootViewController: root.uiviewController)
     }
 }
 
@@ -60,4 +60,3 @@ extension Router {
         return self.children.last { $0 is T } as? T
     }
 }
-
