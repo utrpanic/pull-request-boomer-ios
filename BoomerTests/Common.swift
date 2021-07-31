@@ -1,4 +1,11 @@
+import BoomerLib
 import ModernRIBs
+
+open class DependencyMock {
+    var common: CommonDependency = CommonDependency(
+        gitHubApi: GitHubApiMock()
+    )
+}
 
 struct Riblet: Equatable {
     

@@ -1,12 +1,10 @@
 import Foundation
 
-import CommonLib
-
 public final class GitHubService {
     
-    let api: GitHubApiProtocol
+    private var api: GitHubApiProtocol
     
-    public var samIsLoggedIn: Bool { self.api.authToken != nil }
+    public var samIsLoggedIn: Bool { self.api.loggedIn() }
     
     public init(api: GitHubApiProtocol) {
         self.api = api

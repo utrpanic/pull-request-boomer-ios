@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
 protocol MainRouting: ViewableRouting {
@@ -14,18 +14,18 @@ protocol MainListener: AnyObject {
     
 }
 
+protocol MainInteractorParams {
+    var gitHubService: GitHubService { get }
+}
+
 final class MainInteractor: Interactor, MainInteractable, MainViewListener {
     
     weak var router: MainRouting?
     weak var listener: MainListener?
-    
-    struct Params {
-        var gitHubService: GitHubService
-    }
 
     var gitHubService: GitHubService
     
-    init(params: Params) {
+    init(params: MainInteractorParams) {
         self.gitHubService = params.gitHubService
     }
     

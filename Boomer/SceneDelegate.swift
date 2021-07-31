@@ -1,6 +1,6 @@
 import SwiftUI
 
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {

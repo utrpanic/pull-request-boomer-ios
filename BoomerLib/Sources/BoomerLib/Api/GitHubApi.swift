@@ -1,6 +1,10 @@
 import UIKit
 
-import CommonLib
+public protocol GitHubApiProtocol {
+    var authToken: String? { get set }
+    var loggedIn: () -> Bool { get set }
+    var login: () -> Void { get set }
+}
 
 public final class GitHubApi: GitHubApiProtocol {
     
@@ -27,7 +31,11 @@ public final class GitHubApi: GitHubApiProtocol {
         // do nothing.
     }
     
-    public func login() {
+    public lazy var loggedIn: () -> Bool = {
+        return self.authToken != nil
+    }
+    
+    public lazy var login: () -> Void = {
         UIApplication.shared.open(self.loginUrl, completionHandler: nil)
     }
 }

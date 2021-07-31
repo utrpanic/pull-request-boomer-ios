@@ -1,4 +1,4 @@
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
 protocol SettingsRouting: ViewableRouting {
@@ -9,18 +9,18 @@ protocol SettingsListener: AnyObject {
     
 }
 
+protocol SettingsInteractorParams {
+    var gitHubService: GitHubService { get }
+}
+
 final class SettingsInteractor: Interactor, SettingsInteractable, SettingsViewListener {
     
     weak var router: SettingsRouting?
     weak var listener: SettingsListener?
     
-    struct Params {
-        var gitHubService: GitHubService
-    }
-    
     var gitHubService: GitHubService
     
-    init(params: Params) {
+    init(params: SettingsInteractorParams) {
         self.gitHubService = params.gitHubService
     }
     

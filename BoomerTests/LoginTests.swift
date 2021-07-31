@@ -1,8 +1,7 @@
 import XCTest
 
-import ModelLib
+import BoomerLib
 import ModernRIBs
-import InterfaceLib
 
 @testable import Boomer
 
@@ -16,13 +15,15 @@ final class LoginDependencyMock: DependencyMock, LoginDependency {
 
 final class LoginTests: XCTestCase {
     
+    var parentInteractor: LoginParentInteractorMock!
     var router: LoginRouter!
     var interactor: LoginInteractor!
 
     override func setUpWithError() throws {
         let dependency = LoginDependencyMock()
-        let builder = LoginBuilder(dependency: dependency, in: dependency.world)
-        self.router = builder.build(withListener: LoginParentInteractorMock()) as? LoginRouter
+        let builder = LoginBuilder(dependency: dependency)
+        self.parentInteractor = LoginParentInteractorMock()
+        self.router = builder.build(withListener: self.parentInteractor) as? LoginRouter
         self.interactor = router.interactor as? LoginInteractor
     }
 

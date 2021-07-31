@@ -1,6 +1,5 @@
 import UIKit
 
-import CommonLib
 import ModernRIBs
 
 protocol MainInteractable: Interactable,
@@ -17,19 +16,19 @@ protocol MainViewControllable: ViewControllable {
     func setTabs(_ tabs: [ViewControllable])
 }
 
+protocol MainRouterParams {
+    var loginBuilder: LoginBuildable { get }
+    var homeBuilder: HomeBuildable { get }
+    var settingsBuilder: SettingsBuildable { get }
+}
+
 final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, MainRouting {
-    
-    struct Params {
-        var loginBuilder: LoginBuildable
-        var homeBuilder: HomeBuildable
-        var settingsBuilder: SettingsBuildable
-    }
     
     private let loginBuilder: LoginBuildable
     private let homeBuilder: HomeBuildable
     private let settingsBuilder: SettingsBuildable
     
-    init(interactor: MainInteractable, viewController: MainViewControllable, params: Params) {
+    init(interactor: MainInteractable, viewController: MainViewControllable, params: MainRouterParams) {
         self.loginBuilder = params.loginBuilder
         self.homeBuilder = params.homeBuilder
         self.settingsBuilder = params.settingsBuilder

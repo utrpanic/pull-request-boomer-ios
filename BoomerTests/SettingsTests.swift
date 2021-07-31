@@ -1,8 +1,7 @@
 import XCTest
 
-import ModelLib
+import BoomerLib
 import ModernRIBs
-import InterfaceLib
 
 @testable import Boomer
 
@@ -16,13 +15,15 @@ final class SettingsDependencyMock: DependencyMock, SettingsDependency {
 
 final class SettingsTests: XCTestCase {
     
+    var parentInteractor: SettingsParentInteractorMock!
     var router: SettingsRouter!
     var interactor: SettingsInteractor!
 
     override func setUpWithError() throws {
         let dependency = SettingsDependencyMock()
-        let builder = SettingsBuilder(dependency: dependency, in: dependency.world)
-        self.router = builder.build(withListener: SettingsParentInteractorMock()) as? SettingsRouter
+        let builder = SettingsBuilder(dependency: dependency)
+        self.parentInteractor = SettingsParentInteractorMock()
+        self.router = builder.build(withListener: self.parentInteractor) as? SettingsRouter
         self.interactor = self.router.interactor as? SettingsInteractor
     }
 

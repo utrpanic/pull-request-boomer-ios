@@ -1,59 +1,52 @@
-import CommonLib
-import ModelLib
+import BoomerLib
 import ModernRIBs
 
-private final class AppComponent: EmptyComponent, MainDependency {
-    
-}
-
-private final class AppDependency: TargetDependency {
-    var gitHubApi: GitHubApiProtocol = GitHubApi()
+private class AppComponent: EmptyComponent, MainDependency {
+    let common: CommonDependency = CommonDependency(
+        gitHubApi: GitHubApi()
+    )
 }
 
 protocol MainDependency: Dependency {
-    
+    var common: CommonDependency { get }
 }
 
 private final class MainComponent: Component<MainDependency>,
                                    LoginDependency,
                                    HomeDependency,
                                    SettingsDependency {
+    var common: CommonDependency { self.dependency.common }
+}
+
+extension MainComponent: MainInteractorParams, MainRouterParams {
     
+    var gitHubService: GitHubService {
+        return GitHubService(api: self.dependency.common.gitHubApi)
+    }
+    
+    var loginBuilder: LoginBuildable { LoginBuilder(dependency: self) }
+    var homeBuilder: HomeBuildable { HomeBuilder(dependency: self) }
+    var settingsBuilder: SettingsBuildable { SettingsBuilder(dependency: self) }
 }
 
 protocol MainBuildable: Buildable {
     func build() -> (LaunchRouting, UrlHandler)
 }
 
-final class MainBuilder: BuilderWithTargetDependency<MainDependency>, MainBuildable {
+final class MainBuilder: Builder<MainDependency>, MainBuildable {
     
-    lazy private var component: MainComponent = MainComponent(dependency: self.dependency)
-    
-    private var routerParams: MainRouter.Params {
-        return MainRouter.Params(
-            loginBuilder: LoginBuilder(dependency: self.component, with: self.targetDependency),
-            homeBuilder: HomeBuilder(dependency: self.component, with: self.targetDependency),
-            settingsBuilder: SettingsBuilder(dependency: self.component, with: self.targetDependency)
-        )
-    }
-    
-    private var interactorParams: MainInteractor.Params {
-        return MainInteractor.Params(
-            gitHubService: GitHubService(api: self.targetDependency.gitHubApi)
-        )
-    }
-    
-    init() {
-        super.init(dependency: AppComponent(), with: AppDependency())
+    convenience init() {
+        self.init(dependency: AppComponent())
     }
     
     func build() -> (LaunchRouting, UrlHandler) {
-        let interactor = MainInteractor(params: self.interactorParams)
+        let component = MainComponent(dependency: self.dependency)
+        let interactor = MainInteractor(params: component)
         let viewController = MainViewController()
         let router = MainRouter(
             interactor: interactor,
             viewController: viewController,
-            params: self.routerParams
+            params: component
         )
         return (router, interactor)
     }
