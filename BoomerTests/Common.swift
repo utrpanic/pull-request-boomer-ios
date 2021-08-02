@@ -1,10 +1,11 @@
+import LoginRibs
 import ModernRIBs
 
 @testable import Boomer
 
 open class DependencyMock {
-    var common: CommonDependency = CommonDependency(
-        gitHubApi: GitHubApiMock()
+    var apis: AppApis = AppApis(
+        gitHub: GitHubApiMock()
     )
 }
 

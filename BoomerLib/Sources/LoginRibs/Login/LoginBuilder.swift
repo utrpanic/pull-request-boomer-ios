@@ -1,8 +1,12 @@
 import BoomerLib
 import ModernRIBs
 
-protocol LoginDependency: Dependency {
-    var common: CommonDependency { get }
+public protocol LoginApis {
+    var gitHub: GitHubApiProtocol { get }
+}
+
+public protocol LoginDependency: Dependency {
+    var loginApis: LoginApis { get }
 }
 
 private final class LoginComponent: Component<LoginDependency> {
@@ -11,17 +15,17 @@ private final class LoginComponent: Component<LoginDependency> {
 
 extension LoginComponent: LoginInteractorParams {
     var gitHubService: GitHubService {
-        return GitHubService(api: self.dependency.common.gitHubApi)
+        return GitHubService(api: self.dependency.loginApis.gitHub)
     }
 }
 
-protocol LoginBuildable: Buildable {
+public protocol LoginBuildable: Buildable {
     func build(withListener listener: LoginListener) -> ViewableRouting
 }
 
-final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
+public final class LoginBuilder: Builder<LoginDependency>, LoginBuildable {
 
-    func build(withListener listener: LoginListener) -> ViewableRouting {
+    public func build(withListener listener: LoginListener) -> ViewableRouting {
         let component = LoginComponent(dependency: self.dependency)
         let interactor = LoginInteractor(with: component)
         interactor.listener = listener
