@@ -1,10 +1,17 @@
 import XCTest
 
 import BoomerLib
+import BoomerTestHelperLib
 import ModernRIBs
 
 @testable import LoginRibs
 @testable import Boomer
+
+open class DependencyMock {
+    var apis: AppApis = AppApis(
+        gitHub: GitHubApiMock()
+    )
+}
 
 final class MainDependencyMock: DependencyMock, MainDependency {
     

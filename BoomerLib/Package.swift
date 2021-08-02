@@ -10,7 +10,9 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(name: "BoomerLib", targets: ["BoomerLib"]),
         .library(name: "CommonLib", targets: ["CommonLib"]),
-        .library(name: "LoginRibs", targets: ["LoginRibs"])
+        .library(name: "LoginRibs", targets: ["LoginRibs"]),
+        .library(name: "BoomerTestHelperLib", targets: ["BoomerTestHelperLib"]
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,6 +27,12 @@ let package = Package(
             name: "BoomerLib",
             dependencies: [
                 .product(name: "BoxKit", package: "BoxKit")
+            ]
+        ),
+        .target(
+            name: "BoomerTestHelperLib",
+            dependencies: [
+                "BoomerLib", "CommonLib"
             ]
         ),
         .target(
@@ -43,6 +51,12 @@ let package = Package(
             name: "BoomerLibTests",
             dependencies: [
                 "BoomerLib", "CommonLib"
+            ]
+        ),
+        .testTarget(
+            name: "LoginRibsTests",
+            dependencies: [
+                "BoomerTestHelperLib", "LoginRibs"
             ]
         ),
     ]
