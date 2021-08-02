@@ -8,9 +8,11 @@ let package = Package(
     platforms: [.iOS(.v14)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "BoomerLib",
-            targets: ["BoomerLib"])
+        .library(name: "BoomerLib", targets: ["BoomerLib"]),
+        .library(name: "CommonLib", targets: ["CommonLib"]),
+        .library(name: "LoginRibs", targets: ["LoginRibs"]),
+        .library(name: "BoomerTestHelperLib", targets: ["BoomerTestHelperLib"]
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -24,14 +26,37 @@ let package = Package(
         .target(
             name: "BoomerLib",
             dependencies: [
-                .product(name: "BoxKit", package: "BoxKit"),
-                .product(name: "ModernRIBs", package: "ModernRIBs"),
+                .product(name: "BoxKit", package: "BoxKit")
+            ]
+        ),
+        .target(
+            name: "BoomerTestHelperLib",
+            dependencies: [
+                "BoomerLib", "CommonLib"
+            ]
+        ),
+        .target(
+            name: "CommonLib",
+            dependencies: [
+                .product(name: "ModernRIBs", package: "ModernRIBs")
+            ]
+        ),
+        .target(
+            name: "LoginRibs",
+            dependencies: [
+                "BoomerLib", "CommonLib"
             ]
         ),
         .testTarget(
             name: "BoomerLibTests",
             dependencies: [
-                "BoomerLib"
+                "BoomerLib", "CommonLib"
+            ]
+        ),
+        .testTarget(
+            name: "LoginRibsTests",
+            dependencies: [
+                "BoomerTestHelperLib", "LoginRibs"
             ]
         ),
     ]

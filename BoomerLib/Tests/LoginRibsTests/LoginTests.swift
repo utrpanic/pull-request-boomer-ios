@@ -1,16 +1,21 @@
 import XCTest
 
 import BoomerLib
+import BoomerTestHelperLib
 import ModernRIBs
 
-@testable import Boomer
+@testable import LoginRibs
 
 final class LoginParentInteractorMock: LoginListener {
 
 }
 
-final class LoginDependencyMock: DependencyMock, LoginDependency {
-    
+final class LoginApisMock: LoginApis {
+    var gitHub: GitHubApiProtocol = GitHubApiMock()
+}
+
+final class LoginDependencyMock: LoginDependency {
+    var loginApis: LoginApis { LoginApisMock() }
 }
 
 final class LoginTests: XCTestCase {

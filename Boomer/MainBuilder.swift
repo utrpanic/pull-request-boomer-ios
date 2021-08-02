@@ -1,27 +1,29 @@
 import BoomerLib
+import LoginRibs
 import ModernRIBs
 
 private class AppComponent: EmptyComponent, MainDependency {
-    let common: CommonDependency = CommonDependency(
-        gitHubApi: GitHubApi()
+    let apis: AppApis = AppApis(
+        gitHub: GitHubApi()
     )
 }
 
 protocol MainDependency: Dependency {
-    var common: CommonDependency { get }
+    var apis: AppApis { get }
 }
 
 private final class MainComponent: Component<MainDependency>,
                                    LoginDependency,
                                    HomeDependency,
                                    SettingsDependency {
-    var common: CommonDependency { self.dependency.common }
+    var apis: AppApis { self.dependency.apis }
+    var loginApis: LoginApis { self.dependency.apis }
 }
 
 extension MainComponent: MainInteractorParams, MainRouterParams {
     
     var gitHubService: GitHubService {
-        return GitHubService(api: self.dependency.common.gitHubApi)
+        return GitHubService(api: self.dependency.apis.gitHub)
     }
     
     var loginBuilder: LoginBuildable { LoginBuilder(dependency: self) }

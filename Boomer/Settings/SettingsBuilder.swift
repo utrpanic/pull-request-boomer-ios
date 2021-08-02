@@ -2,7 +2,7 @@ import BoomerLib
 import ModernRIBs
 
 protocol SettingsDependency: Dependency {
-    var common: CommonDependency { get }
+    var apis: AppApis { get }
 }
 
 private final class SettingsComponent: Component<SettingsDependency> {
@@ -11,7 +11,7 @@ private final class SettingsComponent: Component<SettingsDependency> {
 
 extension SettingsComponent: SettingsInteractorParams {
     var gitHubService: GitHubService {
-        return GitHubService(api: self.dependency.common.gitHubApi)
+        return GitHubService(api: self.dependency.apis.gitHub)
     }
 }
 

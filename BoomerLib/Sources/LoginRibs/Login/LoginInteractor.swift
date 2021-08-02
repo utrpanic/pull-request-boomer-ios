@@ -1,11 +1,11 @@
 import BoomerLib
 import ModernRIBs
 
-protocol LoginRouting: ViewableRouting {
+public protocol LoginRouting: ViewableRouting {
 
 }
 
-protocol LoginListener: AnyObject {
+public protocol LoginListener: AnyObject {
 
 }
 

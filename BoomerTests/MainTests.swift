@@ -1,9 +1,17 @@
 import XCTest
 
 import BoomerLib
+import BoomerTestHelperLib
 import ModernRIBs
 
+@testable import LoginRibs
 @testable import Boomer
+
+open class DependencyMock {
+    var apis: AppApis = AppApis(
+        gitHub: GitHubApiMock()
+    )
+}
 
 final class MainDependencyMock: DependencyMock, MainDependency {
     
@@ -11,7 +19,7 @@ final class MainDependencyMock: DependencyMock, MainDependency {
 
 final class MainTests: XCTestCase {
     
-    var common: CommonDependency!
+    var apis: AppApis!
     var router: MainRouter!
     var interactor: MainInteractor!
 
@@ -19,7 +27,7 @@ final class MainTests: XCTestCase {
         let dependency = MainDependencyMock()
         let builder = MainBuilder(dependency: dependency)
         let (router, interactor) = builder.build()
-        self.common = dependency.common
+        self.apis = dependency.apis
         self.router = router as? MainRouter
         self.interactor = interactor as? MainInteractor
     }
@@ -30,7 +38,7 @@ final class MainTests: XCTestCase {
 
     func testLaunchLoggedIn() throws {
         // Arrange
-        self.common.gitHubApi.loggedIn = { true }
+        self.apis.gitHub.loggedIn = { true }
         // Act
         self.router.launch(from: UIWindow())
         // Assert
@@ -47,7 +55,7 @@ final class MainTests: XCTestCase {
     
     func testLaunchLoggedOut() throws {
         // Arrange
-        self.common.gitHubApi.loggedIn = { false }
+        self.apis.gitHub.loggedIn = { false }
         // Act
         self.router.launch(from: UIWindow())
         // Assert
