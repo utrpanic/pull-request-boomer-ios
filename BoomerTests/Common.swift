@@ -1,5 +1,6 @@
-import BoomerLib
 import ModernRIBs
+
+@testable import Boomer
 
 open class DependencyMock {
     var common: CommonDependency = CommonDependency(
