@@ -1,11 +1,16 @@
+import BoomerLib
 import ModernRIBs
 
 protocol HomeDependency: Dependency {
-    
+    var apis: AppApis { get }
 }
 
 private final class HomeComponent: Component<HomeDependency> {
 
+}
+
+extension HomeComponent: HomeInteractorParams {
+    var gitHubApi: GitHubApiProtocol { self.dependency.apis.gitHub }
 }
 
 protocol HomeBuildable: Buildable {
@@ -13,14 +18,10 @@ protocol HomeBuildable: Buildable {
 }
 
 final class HomeBuilder: Builder<HomeDependency>, HomeBuildable {
-    
-    private var interactorParams: HomeInteractor.Params {
-        return HomeInteractor.Params()
-    }
 
     func build(withListener listener: HomeListener) -> ViewableRouting {
-        _ = HomeComponent(dependency: self.dependency)
-        let interactor = HomeInteractor(params: self.interactorParams)
+        let component = HomeComponent(dependency: self.dependency)
+        let interactor = HomeInteractor(params: component)
         interactor.listener = listener
         let viewController = HomeViewController()
         viewController.listener = interactor

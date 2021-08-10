@@ -26,7 +26,8 @@ let package = Package(
         .target(
             name: "BoomerLib",
             dependencies: [
-                .product(name: "BoxKit", package: "BoxKit")
+                .product(name: "BoxKit", package: "BoxKit"),
+                .product(name: "Apollo", package: "Apollo"),
             ]
         ),
         .target(
